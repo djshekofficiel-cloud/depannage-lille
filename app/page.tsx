@@ -1,205 +1,85 @@
-// app/page.tsx — Page d'accueil
+'use client';
 
-import type { Metadata } from "next";
 import { HeroNeon } from "@/components/HeroNeon";
-import ServiceCard from "@/components/ServiceCard";
-import Link from "next/link";
-import { villes } from "@/lib/villes";
-import { services } from "@/lib/services";
-import { IMG } from "@/lib/images";
-import { BorderBeam } from "@/components/ui/BorderBeam";
 
-export const metadata: Metadata = {
-  title: "Dépannage auto Lille & Métropole 24h/24 — SM Dépannage",
-  description:
-    "Dépannage et remorquage auto à Lille, Roubaix, Tourcoing et toute la MEL. Intervention en 20-30 min, 24h/24, 7j/7. Appelez maintenant !",
-  alternates: { canonical: "https://votredomaine.fr" },
-};
-
-const PHONE = "07 67 87 80 34";
-
-function SectionTitle({ kicker, titre, sous }: { kicker: string; titre: React.ReactNode; sous?: string }) {
-  return (
-    <div className="text-center max-w-3xl mx-auto mb-12">
-      <span className="chip mb-4">{kicker}</span>
-      <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-white text-balance">{titre}</h2>
-      {sous && <p className="text-white/65 text-lg mt-4 text-pretty">{sous}</p>}
-    </div>
-  );
-}
-
-const TRUST_BADGES = [
-  "Intervention 24h/24 · 7j/7",
-  "Arrivée 20 à 30 min sur Lille",
-  "Tarif annoncé avant départ",
-  "Techniciens assurés",
-  "Paiement CB, espèces, virement",
-];
-
-const STEPS = [
-  { n: "01", t: "Vous appelez", d: "On décroche immédiatement, on identifie votre panne et votre position." },
-  { n: "02", t: "On confirme le prix", d: "Le tarif est annoncé avant départ, sans surprise à l'arrivée." },
-  { n: "03", t: "On intervient", d: "Réparation sur place si possible, sinon remorquage vers votre destination." },
-];
-
-const ATOUTS = [
-  { t: "Rapidité", d: "Délai moyen de 20 à 30 minutes sur Lille et la MEL.", icon: "M13 2 3 14h7l-1 8 10-12h-7l1-8z" },
-  { t: "Disponibilité", d: "Service continu, 24h/24 et 7j/7, y compris nuits et jours fériés.", icon: "M12 6v6l4 2 M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" },
-  { t: "Transparence", d: "Aucun montant caché : vous connaissez le prix avant l'intervention.", icon: "M12 1v22 M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" },
-  { t: "Fiabilité", d: "Intervenants qualifiés, matériel adapté, véhicule couvert pendant le transport.", icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" },
-];
+const PHONE = '07 67 87 80 34';
 
 export default function HomePage() {
-  const villesDept59 = villes.filter((v) => v.dept === "59").slice(0, 6);
-  const villesDept62 = villes.filter((v) => v.dept === "62").slice(0, 6);
-
   return (
-    <>
+    <main className="bg-black text-white overflow-x-hidden">
+      {/* HERO PREMIUM */}
       <HeroNeon />
 
-      {/* BARRE DE CONFIANCE */}
-      <section className="border-y border-white/10 bg-ink-900/45">
-        <div className="container-x py-6">
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-            {TRUST_BADGES.map((item) => (
-              <li key={item} className="glass rounded-xl px-3 py-2 text-xs sm:text-sm text-white/80 text-center">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      {/* SECTION SERVICES */}
+      <section className="py-24 bg-gradient-to-b from-black via-slate-950 to-black border-t border-red-500/20">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="font-black text-5xl md:text-6xl text-white mb-6">
+              Nos <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">services</span>
+            </h2>
+            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+              Dépannage complet et rapide pour tous vos besoins automobiles
+            </p>
+          </div>
 
-      {/* SERVICES */}
-      <section className="container-x py-20">
-        <SectionTitle
-          kicker="Nos services"
-          titre={<>Votre panne, <span className="text-gradient">notre solution immédiate.</span></>}
-          sous="Chaque intervention est adaptée à votre situation : dépannage sur place quand c&apos;est possible, remorquage si nécessaire."
-        />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => (
-            <ServiceCard key={service.slug} slug={service.slug} nom={service.nom} icon={service.icon} resume={service.resume} />
-          ))}
-        </div>
-        <div className="mt-9 text-center">
-          <Link href="/services" className="btn-ghost">Voir le détail de tous les services</Link>
-        </div>
-      </section>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: '🔧', title: 'Dépannage', desc: 'Réparation sur place pour les petites pannes' },
+              { icon: '🚗', title: 'Remorquage', desc: 'Transport sécurisé de votre véhicule' },
+              { icon: '🔋', title: 'Batterie', desc: 'Changement et recharge batterie 24/7' },
+              { icon: '⚙️', title: 'Crevaison', desc: 'Réparation rapide de pneu' },
+              { icon: '📍', title: 'Rapatriement', desc: 'Assistance routière complète' },
+              { icon: '✓', title: 'Urgence', desc: 'Intervention immédiate garantie' },
+            ].map((service, i) => (
+              <div
+                key={i}
+                className="group relative p-8 rounded-2xl border-2 border-slate-700 bg-gradient-to-br from-slate-900/50 to-black hover:border-red-500/50 hover:from-red-950/20 transition-all duration-300"
+                style={{
+                  animation: `slide-up 0.6s ease-out forwards`,
+                  animationDelay: `${i * 0.1}s`,
+                  opacity: 0,
+                }}
+              >
+                {/* Glow effect */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
+                  boxShadow: 'inset 0 0 30px rgba(239, 68, 68, 0.1), 0 0 20px rgba(239, 68, 68, 0.2)',
+                }} />
 
-      {/* PROCESS */}
-      <section className="relative py-20 border-y border-white/10 bg-ink-900/40">
-        <div aria-hidden className="absolute inset-0 -z-10 bg-grid-faint [background-size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
-        <div className="container-x">
-          <SectionTitle
-            kicker="Comment ça marche"
-            titre={<>Un process simple, <span className="text-gradient">même dans l&apos;urgence.</span></>}
-          />
-          <div className="grid md:grid-cols-3 gap-6">
-            {STEPS.map((s, i) => (
-              <div key={s.n} className="relative card p-7">
-                <span className="font-display font-extrabold text-5xl text-white/10">{s.n}</span>
-                <h3 className="font-display font-bold text-xl text-white mt-2">{s.t}</h3>
-                <p className="text-white/65 text-sm mt-2 leading-relaxed">{s.d}</p>
-                {i < STEPS.length - 1 && (
-                  <span aria-hidden className="hidden md:block absolute top-1/2 -right-3 text-sm-red-500/60 text-2xl">→</span>
-                )}
+                <div className="relative z-10">
+                  <div className="text-5xl mb-4">{service.icon}</div>
+                  <h3 className="font-bold text-2xl text-white mb-3">{service.title}</h3>
+                  <p className="text-slate-300">{service.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* TARIFS PREVIEW */}
-      <section className="container-x py-20">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-ink-900/55 p-7 sm:p-10">
-          <div aria-hidden className="absolute -top-20 right-10 h-56 w-56 rounded-full bg-sm-red-500/20 blur-[90px]" />
-          <div className="relative grid gap-7 lg:grid-cols-[1.2fr_1fr] lg:items-center">
-            <div>
-              <span className="chip mb-4">Tarifs</span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-white text-balance">
-                Des prix clairs, annoncés <span className="text-gradient">avant départ.</span>
-              </h2>
-              <p className="text-white/65 mt-4 max-w-xl">
-                Nous détaillons le coût de l&apos;intervention avant validation : base, distance éventuelle et majoration nuit/jours fériés.
-              </p>
-            </div>
-            <div className="grid sm:grid-cols-3 lg:grid-cols-1 gap-3">
-              <div className="glass rounded-2xl p-4">
-                <p className="text-white/50 text-xs uppercase tracking-[0.18em]">Remorquage</p>
-                <p className="font-display text-2xl text-gradient font-bold mt-1">dès 80 €</p>
-              </div>
-              <div className="glass rounded-2xl p-4">
-                <p className="text-white/50 text-xs uppercase tracking-[0.18em]">Batterie</p>
-                <p className="font-display text-2xl text-gradient font-bold mt-1">dès 60 €</p>
-              </div>
-              <div className="glass rounded-2xl p-4">
-                <p className="text-white/50 text-xs uppercase tracking-[0.18em]">Crevaison</p>
-                <p className="font-display text-2xl text-gradient font-bold mt-1">dès 50 €</p>
-              </div>
-            </div>
+      {/* SECTION AVANTAGES */}
+      <section className="py-24 bg-black border-t border-blue-500/20">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="font-black text-5xl md:text-6xl text-white mb-6">
+              Pourquoi nous <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">choisir</span>
+            </h2>
           </div>
-          <div className="relative mt-7 flex flex-col sm:flex-row gap-3">
-            <Link href="/tarifs" className="btn-primary">Voir tous les tarifs</Link>
-            <a href={`tel:${PHONE}`} className="btn-ghost">Appeler pour un devis immédiat</a>
-          </div>
-        </div>
-      </section>
 
-      {/* ZONES */}
-      <section className="container-x py-20">
-        <SectionTitle
-          kicker="Zones d'intervention"
-          titre={<>Présents partout dans le <span className="text-gradient">59 & 62.</span></>}
-          sous="Lille, MEL, Nord et Pas-de-Calais : nous adaptons le délai d&apos;intervention selon votre secteur et le trafic." 
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            { dept: "59", nom: "Nord", liste: villesDept59 },
-            { dept: "62", nom: "Pas-de-Calais", liste: villesDept62 },
-          ].map((bloc) => (
-            <div key={bloc.dept} className="card p-7">
-              <h3 className="flex items-center gap-3 mb-5">
-                <span className="chip">Dept. {bloc.dept}</span>
-                <span className="font-display font-bold text-xl text-white">{bloc.nom}</span>
-              </h3>
-              <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
-                {bloc.liste.map((ville) => (
-                  <li key={ville.slug}>
-                    <Link href={`/zones-intervention/${ville.slug}`} className="group flex items-center gap-2 text-white/65 hover:text-sm-red-300 transition-colors text-sm">
-                      <span className="text-sm-red-500 group-hover:translate-x-0.5 transition-transform">→</span>
-                      {ville.nom}
-                      <span className="text-white/30 text-xs ml-auto">{ville.delai}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="text-center mt-8">
-          <Link href="/zones-intervention" className="btn-ghost">Voir toutes les villes</Link>
-        </div>
-      </section>
-
-      {/* POURQUOI NOUS */}
-      <section className="relative py-20 border-t border-white/10 bg-ink-900/40">
-        <div className="container-x">
-          <SectionTitle
-            kicker="Pourquoi nous"
-            titre={<>La différence <span className="text-gradient">SM Dépannage.</span></>}
-            sous="Un service pensé pour réduire votre stress et remettre votre véhicule en sécurité le plus vite possible."
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {ATOUTS.map((item) => (
-              <div key={item.t} className="card p-6 text-center">
-                <span className="mx-auto grid place-items-center h-14 w-14 rounded-2xl bg-gradient-to-br from-sm-red-500/20 to-gold-500/10 border border-sm-red-500/30 mb-4">
-                  <svg viewBox="0 0 24 24" className="h-7 w-7 text-sm-red-400" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <path d={item.icon} />
-                  </svg>
-                </span>
-                <h3 className="font-display text-white font-bold text-lg mb-2">{item.t}</h3>
-                <p className="text-white/65 text-sm leading-relaxed">{item.d}</p>
+          <div className="grid md:grid-cols-2 gap-12">
+            {[
+              { num: '01', title: 'Rapidité', detail: '20-30 minutes d\'intervention sur Lille et la MEL' },
+              { num: '02', title: 'Fiabilité', detail: 'Techniciens qualifiés et équipement professionnel' },
+              { num: '03', title: 'Disponibilité', detail: 'Service 24h/24, 7j/7, même jours fériés' },
+              { num: '04', title: 'Transparence', detail: 'Prix annoncés avant intervention, sans surprise' },
+            ].map((item, i) => (
+              <div key={i} className="flex gap-8 items-start group">
+                <div className="text-6xl font-black text-red-500/20 group-hover:text-red-500/40 transition-colors">
+                  {item.num}
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-slate-300 text-lg">{item.detail}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -207,28 +87,79 @@ export default function HomePage() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="container-x py-20">
-        <div className="relative overflow-hidden rounded-[2rem] border border-white/15 shadow-glow-lg">
-          <BorderBeam duration={7} lightColor="#d32f2f" lightWidth={240} />
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${IMG.truckNight}')` }} aria-hidden />
-          <div aria-hidden className="absolute inset-0 bg-ink-950/75" />
-          <div aria-hidden className="absolute inset-0 bg-gradient-to-tr from-sm-red-900/35 to-transparent" />
-          <div aria-hidden className="absolute -top-20 left-1/2 -translate-x-1/2 h-72 w-[36rem] rounded-full bg-sm-red-500/30 blur-[100px]" />
+      <section className="py-24 bg-gradient-to-b from-black via-red-950/10 to-black">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
+            Vous avez besoin d&apos;aide?
+          </h2>
+          <p className="text-xl text-slate-300 mb-12">
+            Appelez-nous maintenant, nos techniciens arrivent en 20-30 minutes
+          </p>
 
-          <div className="relative text-center px-6 py-20">
-            <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white text-balance">
-              En panne <span className="text-gradient">maintenant ?</span>
-            </h2>
-            <p className="text-white/70 text-lg mt-5 max-w-xl mx-auto">
-              Appelez-nous ou envoyez votre localisation. Un technicien part dès validation.
-            </p>
-            <div className="mt-9 flex flex-col sm:flex-row gap-4 justify-center">
-              <a href={`tel:${PHONE}`} className="btn-primary text-lg">Appeler maintenant</a>
-              <Link href="/contact" className="btn-ghost text-lg">Demande de rappel</Link>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <a
+              href={`tel:${PHONE}`}
+              className="group relative px-12 py-6 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-xl rounded-xl hover:shadow-2xl hover:shadow-red-600/50 transition-all duration-300 hover:-translate-y-1 border-2 border-red-500/50"
+            >
+              ☎️ Appeler maintenant
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 rounded-xl" />
+            </a>
+            <button className="px-12 py-6 border-2 border-slate-400 text-slate-200 font-bold text-xl rounded-xl hover:border-white hover:text-white hover:bg-white/5 transition-all duration-300">
+              Demander une intervention
+            </button>
           </div>
         </div>
       </section>
-    </>
+
+      {/* FOOTER */}
+      <footer className="bg-black border-t border-slate-800 py-12">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+              <h4 className="font-bold text-white mb-4">SM Dépannage</h4>
+              <p className="text-slate-400 text-sm">Dépannage automobile rapide et fiable 24h/24</p>
+            </div>
+            <div>
+              <h4 className="font-bold text-white mb-4">Services</h4>
+              <ul className="space-y-2 text-slate-400 text-sm">
+                <li><a href="#" className="hover:text-red-500 transition-colors">Dépannage</a></li>
+                <li><a href="#" className="hover:text-red-500 transition-colors">Remorquage</a></li>
+                <li><a href="#" className="hover:text-red-500 transition-colors">Batterie</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-white mb-4">Zones</h4>
+              <ul className="space-y-2 text-slate-400 text-sm">
+                <li><a href="#" className="hover:text-red-500 transition-colors">Lille</a></li>
+                <li><a href="#" className="hover:text-red-500 transition-colors">Nord (59)</a></li>
+                <li><a href="#" className="hover:text-red-500 transition-colors">Pas-de-Calais (62)</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-white mb-4">Contact</h4>
+              <p className="text-red-500 font-bold text-lg mb-2">{PHONE}</p>
+              <p className="text-slate-400 text-sm">24h/24, 7j/7</p>
+            </div>
+          </div>
+
+          <div className="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
+            <p>© 2026 SM Dépannage. Tous droits réservés.</p>
+          </div>
+        </div>
+      </footer>
+
+      <style jsx>{`
+        @keyframes slide-up {
+          0% {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+    </main>
   );
 }
