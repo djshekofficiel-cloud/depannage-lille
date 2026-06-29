@@ -31,6 +31,10 @@ const TOOL = {
         },
         vehicule: { type: 'string' },
         urgence: { type: 'boolean' },
+        date_souhaitee: {
+          type: 'string',
+          description: 'Date/créneau confirmé avec le client si intervention planifiée (ex: "mardi 30 juin matin", "2026-07-02 14h")',
+        },
         details: { type: 'string' },
       },
       required: ['nom', 'telephone', 'localisation', 'type_probleme'],
@@ -71,8 +75,18 @@ export async function POST(req: Request) {
 
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
+      // Date/heure réelles (Europe/Paris) pour permettre au bot de proposer des créneaux concrets.
+      const now = new Date();
+      const dateFr = new Intl.DateTimeFormat('fr-FR', {
+        weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris',
+      }).format(now);
+      const heureFr = new Intl.DateTimeFormat('fr-FR', {
+        hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris',
+      }).format(now);
+      const dateContext = `CONTEXTE TEMPS RÉEL : nous sommes le ${dateFr}, il est ${heureFr} (heure de Paris). Utilise cette date pour proposer des créneaux précis (demain, jours suivants).`;
+
       const convo: ChatMsg[] = [
-        { role: 'system', content: SYSTEM_PROMPT },
+        { role: 'system', content: `${SYSTEM_PROMPT}\n\n${dateContext}` },
         ...incoming.map((m) => ({ role: m.role, content: m.content })),
       ];
 

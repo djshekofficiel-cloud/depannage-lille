@@ -7,6 +7,7 @@ export interface InterventionInput {
   type_probleme: 'panne' | 'accident' | 'crevaison' | 'batterie' | 'carburant' | 'remorquage' | 'autre';
   vehicule?: string;
   urgence?: boolean;
+  date_souhaitee?: string;
   details?: string;
 }
 
