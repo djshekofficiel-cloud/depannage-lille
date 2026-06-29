@@ -2,6 +2,7 @@
 
 import { SYSTEM_PROMPT, PHONE } from '@/lib/systemPrompt';
 import { createIntervention, type InterventionInput } from '@/lib/crm';
+import { villes } from '@/lib/villes';
 
 export const runtime = 'nodejs';
 export const maxDuration = 30;
@@ -85,8 +86,13 @@ export async function POST(req: Request) {
       }).format(now);
       const dateContext = `CONTEXTE TEMPS RÉEL : nous sommes le ${dateFr}, il est ${heureFr} (heure de Paris). Utilise cette date pour proposer des créneaux précis (demain, jours suivants).`;
 
+      // Liste exacte des villes couvertes (source unique : lib/villes.ts).
+      const villesContext = `VILLES COUVERTES (zone d'intervention exacte) : ${villes
+        .map((v) => `${v.nom} (${v.cp})`)
+        .join(', ')}. Si une ville n'est pas dans cette liste, dis-le honnêtement et propose une vérification au ${PHONE}.`;
+
       const convo: ChatMsg[] = [
-        { role: 'system', content: `${SYSTEM_PROMPT}\n\n${dateContext}` },
+        { role: 'system', content: `${SYSTEM_PROMPT}\n\n${dateContext}\n\n${villesContext}` },
         ...incoming.map((m) => ({ role: m.role, content: m.content })),
       ];
 
@@ -102,6 +108,7 @@ export async function POST(req: Request) {
             body: JSON.stringify({
               model: MODEL,
               max_tokens: 1024,
+              temperature: 0.3, // réponses factuelles et stables (bot de service)
               stream: true,
               tools: [TOOL],
               tool_choice: 'auto',

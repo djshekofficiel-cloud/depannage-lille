@@ -12,6 +12,14 @@ const PHONE = '07 67 87 80 34';
 const WELCOME =
   'Bonjour 👋 Je suis l\'assistant SM Dépannage. Une panne, un remorquage, une urgence dans le 59 ou le 62 ? Dites-moi tout.';
 
+// Questions rapides proposées au visiteur (cliquables).
+const QUICK_REPLIES = [
+  'Quels sont vos tarifs ?',
+  'Quel est le délai d\'intervention ?',
+  'Vous intervenez dans ma ville ?',
+  'J\'ai besoin d\'un dépannage',
+];
+
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
@@ -28,8 +36,8 @@ export default function ChatWidget() {
     if (open) inputRef.current?.focus();
   }, [open]);
 
-  async function send() {
-    const text = input.trim();
+  async function send(forced?: string) {
+    const text = (forced ?? input).trim();
     if (!text || loading) return;
 
     const userMsg: Msg = { role: 'user', content: text };
@@ -186,6 +194,34 @@ export default function ChatWidget() {
                 </div>
               </div>
             )}
+
+            {/* Questions rapides — tant que le visiteur n'a rien demandé */}
+            {messages.length === 1 && !loading && (
+              <div className="flex flex-wrap gap-2 pt-1">
+                {QUICK_REPLIES.map((q) => (
+                  <button
+                    key={q}
+                    onClick={() => send(q)}
+                    className="text-xs text-left px-3 py-2 rounded-xl transition-colors"
+                    style={{
+                      background: 'rgba(220,38,38,0.08)',
+                      border: '1px solid rgba(239,68,68,0.3)',
+                      color: 'rgba(255,255,255,0.85)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(220,38,38,0.18)';
+                      e.currentTarget.style.borderColor = 'rgba(239,68,68,0.6)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(220,38,38,0.08)';
+                      e.currentTarget.style.borderColor = 'rgba(239,68,68,0.3)';
+                    }}
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Saisie */}
@@ -202,7 +238,7 @@ export default function ChatWidget() {
                 style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
               />
               <button
-                onClick={send}
+                onClick={() => send()}
                 disabled={loading || !input.trim()}
                 aria-label="Envoyer"
                 className="flex items-center justify-center rounded-xl text-white disabled:opacity-40"
