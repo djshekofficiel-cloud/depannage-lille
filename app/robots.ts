@@ -1,18 +1,13 @@
-// app/robots.ts — Fichier robots.txt dynamique
-
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [
-      {
-        userAgent: "*",
-        allow: "/",
-        // Exclure les pages légales et l'API des robots
-        disallow: ["/api/", "/mentions-legales", "/politique-confidentialite"],
-      },
-    ],
-    sitemap: "https://votredomaine.fr/sitemap.xml",
-    host: "https://votredomaine.fr",
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: ['/admin', '/api', '/.next'],
+    },
+    sitemap: 'https://depannage-lille.vercel.app/sitemap.xml',
+    host: 'https://depannage-lille.vercel.app',
   };
 }

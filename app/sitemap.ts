@@ -1,69 +1,62 @@
-// app/sitemap.ts — Sitemap dynamique incluant toutes les pages villes et services
-
-import { MetadataRoute } from "next";
-import { villes } from "@/lib/villes";
-import { services } from "@/lib/services";
-
-const BASE_URL = "https://votredomaine.fr";
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://depannage-lille.vercel.app';
   const now = new Date();
 
-  // ── Pages statiques principales ──────────────────────────────────────────
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: BASE_URL,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${BASE_URL}/contact`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/tarifs`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/services`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/zones-intervention`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/a-propos`,
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.5,
-    },
+  const mainPages = [
+    { url: baseUrl, priority: 1.0 },
+    { url: `${baseUrl}/contact`, priority: 0.9 },
+    { url: `${baseUrl}/services`, priority: 0.8 },
+    { url: `${baseUrl}/zones-intervention`, priority: 0.8 },
+    { url: `${baseUrl}/mentions-legales`, priority: 0.3 },
+    { url: `${baseUrl}/politique-confidentialite`, priority: 0.3 },
   ];
 
-  // ── Pages services dynamiques ─────────────────────────────────────────────
-  const servicePages: MetadataRoute.Sitemap = services.map((s) => ({
-    url: `${BASE_URL}/services/${s.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.85,
+  const servicePages = [
+    'depannage-sur-place',
+    'remorquage',
+    'batterie',
+    'crevaison',
+    'rapatriement',
+  ].map((slug) => ({
+    url: `${baseUrl}/services/${slug}`,
+    priority: 0.7,
   }));
 
-  // ── Pages villes dynamiques ───────────────────────────────────────────────
-  const villePages: MetadataRoute.Sitemap = villes.map((v) => ({
-    url: `${BASE_URL}/zones-intervention/${v.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
+  const cityPages = [
+    { slug: 'lille', priority: 0.9 },
+    { slug: 'roubaix', priority: 0.85 },
+    { slug: 'tourcoing', priority: 0.85 },
+    { slug: 'villeneuve-d-ascq', priority: 0.8 },
+    { slug: 'wattrelos', priority: 0.8 },
+    { slug: 'marcq-en-baroeul', priority: 0.8 },
+    { slug: 'lambersart', priority: 0.8 },
+    { slug: 'la-madeleine', priority: 0.8 },
+    { slug: 'croix', priority: 0.8 },
+    { slug: 'wasquehal', priority: 0.8 },
+    { slug: 'mons-en-baroeul', priority: 0.8 },
+    { slug: 'armentieres', priority: 0.8 },
+    { slug: 'halluin', priority: 0.8 },
+    { slug: 'lens', priority: 0.9 },
+    { slug: 'lievin', priority: 0.85 },
+    { slug: 'bethune', priority: 0.85 },
+    { slug: 'arras', priority: 0.85 },
+    { slug: 'henin-beaumont', priority: 0.8 },
+    { slug: 'bruay-la-buissiere', priority: 0.8 },
+    { slug: 'carvin', priority: 0.8 },
+  ].map((city) => ({
+    url: `${baseUrl}/zones-intervention/${city.slug}`,
+    priority: city.priority,
   }));
 
-  return [...staticPages, ...servicePages, ...villePages];
+  return [
+    ...mainPages,
+    ...servicePages,
+    ...cityPages,
+  ].map((page) => ({
+    ...page,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+  }));
 }
