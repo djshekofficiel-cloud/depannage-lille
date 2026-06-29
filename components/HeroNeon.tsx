@@ -72,24 +72,18 @@ export function HeroNeon() {
               </defs>
             </svg>
 
-            {/* Logo SVG avec animation */}
+            {/* Logo avec animation */}
             <div className="relative animate-fade-in-scale" style={{
               animation: 'fade-in-scale 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
               filter: 'drop-shadow(0 0 40px rgba(239, 68, 68, 0.5)) drop-shadow(0 0 80px rgba(59, 130, 246, 0.2))',
             }}>
-              <svg
-                width="380"
-                height="380"
-                viewBox="0 0 1254 1254"
-                className="drop-shadow-2xl"
-              >
-                <image
-                  href="/logo-sm-depannage.svg"
-                  width="1254"
-                  height="1254"
-                  preserveAspectRatio="xMidYMid meet"
-                />
-              </svg>
+              <img
+                src="/logo-sm-depannage.png"
+                alt="SM Dépannage"
+                width={380}
+                height={380}
+                className="drop-shadow-2xl object-contain"
+              />
             </div>
 
             {/* Reflets lumineux flottants */}
