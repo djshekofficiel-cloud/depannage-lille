@@ -1,6 +1,6 @@
 'use client';
 
-import { HeroNeon } from "@/components/HeroNeon";
+import { HeroGeometric } from "@/components/HeroGeometric";
 import { villes } from "@/lib/villes";
 
 const PHONE = '07 67 87 80 34';
@@ -27,7 +27,7 @@ const AVANTAGES = [
 export default function HomePage() {
   return (
     <main className="bg-black text-white overflow-x-hidden">
-      <HeroNeon />
+      <HeroGeometric />
 
       {/* ── SECTION SERVICES ── */}
       <section className="py-16 sm:py-24 bg-gradient-to-b from-black via-slate-950 to-black border-t border-red-500/20">
