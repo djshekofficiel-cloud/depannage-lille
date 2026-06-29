@@ -81,8 +81,8 @@ export function HeroNeon() {
 
           {/* Image logo */}
           <img
-            src="/logo-sm-depannage.png"
-            alt="SM Dépannage"
+            src="/logo-sm-depannage-opt.png"
+            alt="SM Dépannage — Dépannage automobile rapide et fiable 24h/24"
             className="relative z-10 w-full h-auto object-contain select-none"
             style={{
               filter: mounted

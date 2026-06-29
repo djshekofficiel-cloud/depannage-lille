@@ -222,6 +222,69 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── FORMULAIRE CONTACT ── */}
+      <section className="py-16 sm:py-24 bg-black border-t border-white/5">
+        <div className="container mx-auto px-4 sm:px-6 max-w-2xl">
+          <div className="text-center mb-10 sm:mb-14">
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold tracking-widest uppercase text-blue-300 border border-blue-500/40 bg-blue-950/20 mb-4">
+              Nous contacter
+            </span>
+            <h2 className="font-black text-white leading-none"
+              style={{ fontSize: 'clamp(2rem,6vw,4rem)' }}>
+              Laissez-nous un&nbsp;
+              <span style={{
+                background: 'linear-gradient(90deg,#3b82f6,#2563eb)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                filter: 'drop-shadow(0 0 12px rgba(59,130,246,0.6))',
+              }}>message</span>
+            </h2>
+            <p className="text-slate-400 mt-3" style={{ fontSize: 'clamp(0.9rem,2.2vw,1rem)' }}>
+              Nous vous répondrons dans les 2 heures
+            </p>
+          </div>
+
+          <form className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input
+                type="text"
+                placeholder="Votre nom"
+                required
+                className="px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 transition-colors"
+              />
+              <input
+                type="tel"
+                placeholder="Votre téléphone"
+                required
+                className="px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 transition-colors"
+              />
+            </div>
+            <input
+              type="email"
+              placeholder="Votre email"
+              required
+              className="w-full px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 transition-colors"
+            />
+            <textarea
+              placeholder="Décrivez votre panne ou votre besoin..."
+              rows={4}
+              className="w-full px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 transition-colors resize-none"
+            />
+            <button
+              type="submit"
+              className="w-full py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-lg hover:shadow-xl hover:shadow-red-600/50 transition-all duration-300 hover:-translate-y-1"
+              style={{ fontSize: 'clamp(1rem,3vw,1.1rem)' }}
+            >
+              Envoyer mon message
+            </button>
+          </form>
+          <p className="text-center text-slate-500 text-xs sm:text-sm mt-6">
+            Ou appelez directement : <strong className="text-red-400">{PHONE}</strong>
+          </p>
+        </div>
+      </section>
+
       {/* ── CTA FINAL ── */}
       <section className="py-16 sm:py-24 bg-gradient-to-b from-black via-red-950/8 to-black">
         <div className="container mx-auto px-4 sm:px-6 max-w-4xl text-center">

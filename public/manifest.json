@@ -1,0 +1,33 @@
+{
+  "name": "SM Dépannage — Dépannage auto Lille",
+  "short_name": "SM Dépannage",
+  "description": "Service de dépannage et remorquage auto à Lille, Roubaix, Tourcoing et toute la MEL. Intervention 24h/24, 7j/7.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#dc2626",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["automotive", "services"],
+  "screenshots": [
+    {
+      "src": "/og.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
+}
