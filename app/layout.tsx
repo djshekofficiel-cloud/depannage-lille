@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import CallButton from "@/components/CallButton";
 import Logo from "@/components/Logo";
 import { Header } from "@/components/Header";
+import ChatWidget from "@/components/ChatWidget";
 
 const StarsCanvas = dynamic(
   () => import("@/components/ui/StarsCanvas").then((m) => ({ default: m.StarsCanvas })),
@@ -208,6 +209,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <div className="md:hidden h-16" aria-hidden />
         <CallButton />
+        <ChatWidget />
       </body>
     </html>
   );
