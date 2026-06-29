@@ -151,12 +151,12 @@ export function HeroGeometric() {
                   "drop-shadow(0 0 24px rgba(220,38,38,0.7)) drop-shadow(0 0 60px rgba(220,38,38,0.35))",
               }}
             />
-            {/* Phares avant — appels de phares (flash blanc) */}
-            <span className="hl-headlight" style={{ left: "57%", top: "60%" }} />
-            <span className="hl-headlight" style={{ left: "64%", top: "61%", animationDelay: "0.18s" }} />
-            {/* Gyrophares — rampe sur le toit (rouge ↔ bleu) */}
-            <span className="hl-beacon hl-red" style={{ left: "48%", top: "44%" }} />
-            <span className="hl-beacon hl-blue" style={{ left: "55%", top: "44%" }} />
+            {/* Phares avant — un de chaque côté de la calandre (appels de phares) */}
+            <span className="hl-headlight" style={{ left: "70%", top: "56.5%" }} />
+            <span className="hl-headlight" style={{ left: "78%", top: "57%", animationDelay: "0.16s" }} />
+            {/* Gyrophares — sur le toit de la cabine (rouge ↔ bleu) */}
+            <span className="hl-beacon hl-red" style={{ left: "64%", top: "45.5%" }} />
+            <span className="hl-beacon hl-blue" style={{ left: "67.5%", top: "45.5%" }} />
           </motion.div>
 
           {/* Titre */}
