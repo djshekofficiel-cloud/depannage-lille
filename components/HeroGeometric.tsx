@@ -115,7 +115,7 @@ export function HeroGeometric() {
 
       {/* Contenu */}
       <div className="relative z-10 container mx-auto px-4 md:px-6 py-16">
-        <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
+        <div className="max-w-5xl mx-auto text-center flex flex-col items-center">
           {/* Badge disponibilité */}
           <motion.div
             custom={0}
@@ -165,13 +165,16 @@ export function HeroGeometric() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="font-black tracking-tight leading-[1.05] mb-6"
-            style={{ fontSize: "clamp(2.2rem,7vw,5rem)" }}
+            className="tracking-tight leading-tight mb-6 whitespace-nowrap"
+            style={{
+              fontFamily: "var(--font-russo), system-ui, sans-serif",
+              fontSize: "clamp(0.95rem,3.8vw,2.8rem)",
+              letterSpacing: "-0.01em",
+            }}
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
-              Dépannage automobile
+              Dépannage automobile{" "}
             </span>
-            <br />
             <span
               className="bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-red-500 to-red-400"
               style={{ filter: "drop-shadow(0 0 16px rgba(220,38,38,0.55))" }}

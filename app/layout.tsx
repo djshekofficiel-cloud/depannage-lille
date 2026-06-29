@@ -1,7 +1,7 @@
 // app/layout.tsx — Layout global : SEO, JSON-LD, header glass, footer premium
 
 import type { Metadata } from "next";
-import { Inter, Sora } from "next/font/google";
+import { Inter, Sora, Russo_One } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -21,6 +21,7 @@ const sora = Sora({
   weight: ["400", "600", "700", "800"],
   variable: "--font-sora",
 });
+const russo = Russo_One({ subsets: ["latin"], weight: "400", variable: "--font-russo" });
 
 const SITE_URL = "https://depannage-lille.vercel.app";
 
@@ -118,7 +119,7 @@ const PHONE_LABEL = "07 67 87 80 34";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${sora.variable} bg-ink-950`}>
+    <html lang="fr" className={`${inter.variable} ${sora.variable} ${russo.variable} bg-ink-950`}>
       <head>
         <meta charSet="utf-8" />
         <meta name="theme-color" content="#dc2626" />
