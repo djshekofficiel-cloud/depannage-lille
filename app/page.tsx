@@ -229,21 +229,26 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 max-w-2xl">
           <div className="text-center mb-10 sm:mb-14">
             <span className="inline-block px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold tracking-widest uppercase text-blue-300 border border-blue-500/40 bg-blue-950/20 mb-4">
-              Nous contacter
+              Demande planifiée
             </span>
             <h2 className="font-black text-white leading-none"
               style={{ fontSize: 'clamp(2rem,6vw,4rem)' }}>
-              Laissez-nous un&nbsp;
+              Planifier une&nbsp;
               <span style={{
                 background: 'linear-gradient(90deg,#3b82f6,#2563eb)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
                 filter: 'drop-shadow(0 0 12px rgba(59,130,246,0.6))',
-              }}>message</span>
+              }}>intervention</span>
             </h2>
-            <p className="text-slate-400 mt-3" style={{ fontSize: 'clamp(0.9rem,2.2vw,1rem)' }}>
-              Nous vous répondrons dans les 2 heures
+            <p className="text-slate-300 mt-3 mx-auto" style={{ fontSize: 'clamp(0.9rem,2.2vw,1rem)', maxWidth: 560 }}>
+              Pour une demande <strong className="text-blue-300">non urgente</strong> : par exemple faire remorquer un véhicule à une <strong className="text-white">date et une heure précises</strong>. Nous vous répondons sous 2 heures.
+            </p>
+            <p className="mt-5 inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold"
+              style={{ border: '1px solid rgba(239,68,68,0.4)', background: 'rgba(220,38,38,0.08)', color: '#fca5a5' }}>
+              ⚠️ Urgence ou panne en cours ? Appelez le&nbsp;
+              <a href={`tel:${PHONE}`} className="text-red-300 underline font-bold whitespace-nowrap">{PHONE}</a>
             </p>
           </div>
 
@@ -269,7 +274,7 @@ export default function HomePage() {
               className="w-full px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 transition-colors"
             />
             <textarea
-              placeholder="Décrivez votre panne ou votre besoin..."
+              placeholder="Votre besoin + la date et l'heure souhaitées (ex : remorquage le 5 juillet à 9h, lieu de départ et destination)..."
               rows={4}
               className="w-full px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 transition-colors resize-none"
             />
@@ -278,7 +283,7 @@ export default function HomePage() {
               className="w-full py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-lg hover:shadow-xl hover:shadow-red-600/50 transition-all duration-300 hover:-translate-y-1"
               style={{ fontSize: 'clamp(1rem,3vw,1.1rem)' }}
             >
-              Envoyer mon message
+              Envoyer ma demande planifiée
             </button>
           </form>
           <p className="text-center text-slate-500 text-xs sm:text-sm mt-6">
