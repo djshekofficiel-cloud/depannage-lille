@@ -133,21 +133,31 @@ export function HeroGeometric() {
             </span>
           </motion.div>
 
-          {/* Logo */}
-          <motion.img
+          {/* Logo + effets lumineux (phares & gyrophares de la dépanneuse) */}
+          <motion.div
             custom={1}
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            src="/logo-sm-depannage-opt.png"
-            alt="SM Dépannage — dépannage automobile rapide et fiable"
-            className="w-full h-auto object-contain select-none mb-8"
-            style={{
-              maxWidth: "min(360px, 70vw)",
-              filter:
-                "drop-shadow(0 0 24px rgba(220,38,38,0.7)) drop-shadow(0 0 60px rgba(220,38,38,0.35))",
-            }}
-          />
+            className="relative mb-8"
+            style={{ width: "min(360px, 70vw)" }}
+          >
+            <img
+              src="/logo-sm-depannage-opt.png"
+              alt="SM Dépannage — dépannage automobile rapide et fiable"
+              className="w-full h-auto object-contain select-none"
+              style={{
+                filter:
+                  "drop-shadow(0 0 24px rgba(220,38,38,0.7)) drop-shadow(0 0 60px rgba(220,38,38,0.35))",
+              }}
+            />
+            {/* Phares avant — appels de phares (flash blanc) */}
+            <span className="hl-headlight" style={{ left: "57%", top: "60%" }} />
+            <span className="hl-headlight" style={{ left: "64%", top: "61%", animationDelay: "0.18s" }} />
+            {/* Gyrophares — rampe sur le toit (rouge ↔ bleu) */}
+            <span className="hl-beacon hl-red" style={{ left: "48%", top: "44%" }} />
+            <span className="hl-beacon hl-blue" style={{ left: "55%", top: "44%" }} />
+          </motion.div>
 
           {/* Titre */}
           <motion.h1

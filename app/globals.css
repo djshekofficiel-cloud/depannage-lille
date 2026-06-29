@@ -79,6 +79,37 @@ body {
     color: #fff;
     text-shadow: 0 0 14px rgba(59, 130, 246, 0.65), 0 0 32px rgba(59, 130, 246, 0.35);
   }
+  /* ── Effets lumineux sur le logo : phares (appels) + gyrophares ── */
+  .hl-headlight {
+    position: absolute;
+    width: 13%;
+    height: 13%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    mix-blend-mode: screen;
+    background: radial-gradient(circle, rgba(255,255,240,0.95) 0%, rgba(255,250,210,0.5) 35%, transparent 70%);
+    opacity: 0;
+    animation: headlight-flash 4.5s ease-in-out infinite;
+  }
+  .hl-beacon {
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+  .hl-red {
+    background: radial-gradient(circle, rgba(255,70,70,1) 0%, rgba(255,0,0,0.55) 40%, transparent 72%);
+    animation: beacon-red 1.1s steps(1, end) infinite;
+  }
+  .hl-blue {
+    background: radial-gradient(circle, rgba(90,150,255,1) 0%, rgba(0,90,255,0.55) 40%, transparent 72%);
+    animation: beacon-blue 1.1s steps(1, end) infinite;
+  }
+
   /* Mot mis en avant : dégradé rouge + halo */
   .neon-accent {
     @apply bg-clip-text text-transparent;
@@ -199,6 +230,25 @@ body {
 @keyframes border-beam {
   from { offset-distance: 0%; }
   to   { offset-distance: 100%; }
+}
+
+/* Phares : appels de phares (double flash puis pause) */
+@keyframes headlight-flash {
+  0%, 4%   { opacity: 0; }
+  6%       { opacity: 1; }
+  9%       { opacity: 0.12; }
+  12%      { opacity: 1; }
+  16%      { opacity: 0; }
+  100%     { opacity: 0; }
+}
+/* Gyrophares : rouge et bleu en alternance */
+@keyframes beacon-red {
+  0%, 49%      { opacity: 1; }
+  50%, 100%    { opacity: 0; }
+}
+@keyframes beacon-blue {
+  0%, 49%      { opacity: 0; }
+  50%, 100%    { opacity: 1; }
 }
 
 /* Respect des préférences de mouvement réduit */
