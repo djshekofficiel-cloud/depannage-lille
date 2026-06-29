@@ -50,31 +50,55 @@ export function HeroNeon() {
           <div className="absolute inset-0 rounded-full"
             style={{ background: 'radial-gradient(circle at 60% 40%,rgba(59,130,246,0.25) 0%,transparent 60%)', animation: 'halo-pulse 4s ease-in-out infinite 1s', filter: 'blur(28px)' }} />
 
-          {/* Anneau néon tournant */}
+          {/* Anneau néon tournant + contour lumineux fixe */}
           {mounted && (
             <>
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100"
+              {/* Contour néon lumineux FIXE qui épouse le logo */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none"
+                viewBox="0 0 100 100"
+                style={{ animation: 'neon-breathe 2.5s ease-in-out infinite' }}>
+                <defs>
+                  <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="2" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+                {/* halo large rouge */}
+                <circle cx="50" cy="50" r="48.5" fill="none" stroke="#ef4444" strokeWidth="1.6"
+                  opacity="0.55" filter="url(#neon-glow)" />
+                {/* trait net rouge vif */}
+                <circle cx="50" cy="50" r="48.5" fill="none" stroke="#ff5a5a" strokeWidth="0.7"
+                  opacity="0.95" />
+              </svg>
+
+              {/* Anneau dégradé rouge→bleu tournant */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100"
                 style={{ animation: 'spin-slow 12s linear infinite' }}>
                 <defs>
                   <linearGradient id="rg1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#ef4444" stopOpacity="0.9" />
+                    <stop offset="0%" stopColor="#ef4444" stopOpacity="1" />
                     <stop offset="45%" stopColor="#ef4444" stopOpacity="0.05" />
                     <stop offset="55%" stopColor="#3b82f6" stopOpacity="0.05" />
-                    <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.9" />
+                    <stop offset="100%" stopColor="#3b82f6" stopOpacity="1" />
                   </linearGradient>
                 </defs>
-                <circle cx="50" cy="50" r="47" fill="none" stroke="url(#rg1)" strokeWidth="1.4" />
+                <circle cx="50" cy="50" r="46" fill="none" stroke="url(#rg1)" strokeWidth="1.6" />
               </svg>
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100"
+
+              {/* Anneau pointillé bleu contre-rotatif */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100"
                 style={{ animation: 'spin-reverse 18s linear infinite' }}>
                 <defs>
                   <linearGradient id="rg2" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.7" />
+                    <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.85" />
                     <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.02" />
-                    <stop offset="100%" stopColor="#ef4444" stopOpacity="0.7" />
+                    <stop offset="100%" stopColor="#ef4444" stopOpacity="0.85" />
                   </linearGradient>
                 </defs>
-                <circle cx="50" cy="50" r="44" fill="none" stroke="url(#rg2)" strokeWidth="0.8" strokeDasharray="28 12" />
+                <circle cx="50" cy="50" r="43" fill="none" stroke="url(#rg2)" strokeWidth="0.9" strokeDasharray="28 12" />
               </svg>
             </>
           )}
@@ -86,9 +110,9 @@ export function HeroNeon() {
             className="relative z-10 w-full h-auto object-contain select-none"
             style={{
               filter: mounted
-                ? 'drop-shadow(0 0 28px rgba(220,38,38,0.85)) drop-shadow(0 0 70px rgba(220,38,38,0.40)) drop-shadow(0 0 3px rgba(255,255,255,0.5))'
+                ? 'drop-shadow(0 0 16px rgba(239,68,68,0.95)) drop-shadow(0 0 40px rgba(220,38,38,0.7)) drop-shadow(0 0 80px rgba(220,38,38,0.45)) drop-shadow(0 0 4px rgba(255,255,255,0.6))'
                 : 'none',
-              animation: 'logo-entrance 1.1s cubic-bezier(0.34,1.56,0.64,1) forwards, logo-float 6s ease-in-out 1.1s infinite',
+              animation: 'logo-entrance 1.1s cubic-bezier(0.34,1.56,0.64,1) forwards, logo-float 6s ease-in-out 1.1s infinite, logo-neon-pulse 2.5s ease-in-out 1.1s infinite',
               opacity: 0,
             }}
           />
@@ -174,10 +198,28 @@ export function HeroNeon() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes halo-pulse  { 0%,100%{opacity:.6;} 50%{opacity:1;} }
         @keyframes spin-slow   { to{transform:rotate(360deg);} }
         @keyframes spin-reverse{ to{transform:rotate(-360deg);} }
+        @keyframes neon-breathe {
+          0%,100%{opacity:.65;}
+          50%    {opacity:1;}
+        }
+        @keyframes logo-neon-pulse {
+          0%,100%{
+            filter: drop-shadow(0 0 14px rgba(239,68,68,0.85))
+                    drop-shadow(0 0 34px rgba(220,38,38,0.55))
+                    drop-shadow(0 0 70px rgba(220,38,38,0.35))
+                    drop-shadow(0 0 4px rgba(255,255,255,0.55));
+          }
+          50%{
+            filter: drop-shadow(0 0 22px rgba(239,68,68,1))
+                    drop-shadow(0 0 50px rgba(220,38,38,0.8))
+                    drop-shadow(0 0 95px rgba(220,38,38,0.55))
+                    drop-shadow(0 0 5px rgba(255,255,255,0.75));
+          }
+        }
         @keyframes logo-entrance {
           from{opacity:0;transform:scale(.78) translateY(24px);}
           to  {opacity:1;transform:scale(1)   translateY(0);}
