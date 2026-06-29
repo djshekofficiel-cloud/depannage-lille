@@ -77,6 +77,15 @@ export default function SplashCursor({
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    // Effet réservé au PC (souris + grand écran) : retiré sur téléphone/tablette
+    const isDesktop =
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+      window.innerWidth >= 1024;
+    if (!isDesktop) {
+      if (canvasRef.current) canvasRef.current.style.display = "none";
+      return;
+    }
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 

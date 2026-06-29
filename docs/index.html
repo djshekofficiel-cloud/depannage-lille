@@ -566,7 +566,7 @@ document.getElementById('cbMsgs').addEventListener('click', function(e){
 
 <canvas id="fluid" style="position:fixed;top:0;left:0;z-index:50;pointer-events:none;width:100vw;height:100vh;display:block"></canvas>
 <script>
-(function(){var __c=document.getElementById('fluid');if(!__c)return;try{if(!__c.getContext('webgl2')&&!__c.getContext('webgl'))return;}catch(e){return;}
+(function(){var __c=document.getElementById('fluid');if(!__c)return;if(!matchMedia("(hover: hover) and (pointer: fine)").matches||innerWidth<1024){__c.remove();return;}try{if(!__c.getContext('webgl2')&&!__c.getContext('webgl'))return;}catch(e){return;}
 var __afid;var SIM_RESOLUTION=128,DYE_RESOLUTION=1440,CAPTURE_RESOLUTION=512,DENSITY_DISSIPATION=3.5,VELOCITY_DISSIPATION=2,PRESSURE=0.1,PRESSURE_ITERATIONS=20,CURL=3,SPLAT_RADIUS=0.2,SPLAT_FORCE=6000,SHADING=true,COLOR_UPDATE_SPEED=10,BACK_COLOR={r:0.5,g:0,b:0},TRANSPARENT=true,RAINBOW_MODE=true,COLOR='#ff0000';
 
     const canvas = document.getElementById("fluid");
