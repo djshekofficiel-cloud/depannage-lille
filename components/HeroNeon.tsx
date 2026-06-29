@@ -152,7 +152,7 @@ export function HeroNeon() {
           <div className="grid grid-cols-3 gap-6 pt-8 border-t border-slate-800 w-full mt-8">
             <div className="text-center">
               <div className="text-3xl font-black text-red-500">20-30</div>
-              <p className="text-sm text-slate-400 mt-2">Minutes<br className="sm:hidden" /> d'intervention</p>
+              <p className="text-sm text-slate-400 mt-2">Minutes<br className="sm:hidden" /> d&apos;intervention</p>
             </div>
             <div className="text-center">
               <div className="text-3xl font-black text-blue-400">59/62</div>
