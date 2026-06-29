@@ -1,68 +1,71 @@
-// app/zones-intervention/page.tsx — Liste de toutes les villes
+'use client';
 
-import type { Metadata } from "next";
-import Link from "next/link";
-import PageHeader from "@/components/PageHeader";
-import { getVillesByDept, type Ville } from "@/lib/villes";
+import { villes } from '@/lib/villes';
+import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: "Zones d'intervention — Dépannage auto 59 & 62",
-  description:
-    "SM Dépannage intervient dans tout le Nord (59) et le Pas-de-Calais (62) : Lille, Roubaix, Lens, Arras et + de 14 villes. Trouvez votre ville.",
-  alternates: { canonical: "https://votredomaine.fr/zones-intervention" },
-};
+export default function ZonesInterventionPage() {
+  const dept59 = villes.filter(v => v.dept === '59');
+  const dept62 = villes.filter(v => v.dept === '62');
 
-function VilleCard({ v }: { v: Ville }) {
   return (
-    <Link href={`/zones-intervention/${v.slug}`} className="group card p-5">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="font-display text-white font-bold group-hover:text-ember-300 transition-colors">{v.nom}</p>
-          <p className="text-white/40 text-sm">{v.cp}</p>
+    <main className="bg-black text-white">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-slate-950 via-black to-black border-b border-red-500/20">
+        <div className="container mx-auto px-4 max-w-6xl text-center">
+          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
+            Zones d&apos;<span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">intervention</span>
+          </h1>
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+            SM Dépannage intervient sur toute la région Hauts-de-France. 20-30 minutes d&apos;intervention garanties.
+          </p>
         </div>
-        <span className="text-ember-300 text-xs font-semibold bg-ember-500/10 px-2.5 py-1 rounded-md border border-ember-500/20 whitespace-nowrap">
-          {v.delai}
-        </span>
-      </div>
-      <p className="text-white/40 text-xs mt-3 truncate">{v.axes}</p>
-    </Link>
-  );
-}
+      </section>
 
-export default function ZonesPage() {
-  const villes59 = getVillesByDept("59");
-  const villes62 = getVillesByDept("62");
-
-  return (
-    <>
-      <PageHeader
-        crumbs={[{ label: "Accueil", href: "/" }, { label: "Zones d'intervention" }]}
-        kicker="Zones · 59 & 62"
-        titre={<>Une dépanneuse <span className="text-gradient">près de chez vous.</span></>}
-        sous="Nous couvrons tout le Nord (59) et le Pas-de-Calais (62). Sélectionnez votre ville pour le délai et les axes couverts."
-      />
-
-      <div className="container-x py-16 max-w-5xl">
-        <section className="mb-14">
-          <h2 className="flex items-center gap-3 mb-6">
-            <span className="chip">Dept. 59</span>
-            <span className="font-display text-2xl font-bold text-white">Nord</span>
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {villes59.map((v) => <VilleCard key={v.slug} v={v} />)}
+      <section className="py-16 md:py-20 border-b border-slate-800">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <h2 className="text-3xl font-black text-white mb-12">Nord (59)</h2>
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+            {dept59.map((v) => (
+              <Link
+                key={v.slug}
+                href={`/zones-intervention/${v.slug}`}
+                className="p-6 rounded-lg bg-gradient-to-br from-slate-900/50 to-black border-2 border-slate-800 hover:border-red-500/50 hover:from-red-950/20 transition-all group"
+              >
+                <h3 className="font-bold text-lg text-white group-hover:text-red-400 transition-colors mb-2">{v.nom}</h3>
+                <p className="text-sm text-slate-400 mb-2">{v.cp}</p>
+                <p className="text-xs text-slate-500 group-hover:text-slate-400 transition-colors">{v.delai}</p>
+              </Link>
+            ))}
           </div>
-        </section>
 
-        <section>
-          <h2 className="flex items-center gap-3 mb-6">
-            <span className="chip">Dept. 62</span>
-            <span className="font-display text-2xl font-bold text-white">Pas-de-Calais</span>
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {villes62.map((v) => <VilleCard key={v.slug} v={v} />)}
+          <h2 className="text-3xl font-black text-white mb-12">Pas-de-Calais (62)</h2>
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {dept62.map((v) => (
+              <Link
+                key={v.slug}
+                href={`/zones-intervention/${v.slug}`}
+                className="p-6 rounded-lg bg-gradient-to-br from-slate-900/50 to-black border-2 border-slate-800 hover:border-red-500/50 hover:from-red-950/20 transition-all group"
+              >
+                <h3 className="font-bold text-lg text-white group-hover:text-red-400 transition-colors mb-2">{v.nom}</h3>
+                <p className="text-sm text-slate-400 mb-2">{v.cp}</p>
+                <p className="text-xs text-slate-500 group-hover:text-slate-400 transition-colors">{v.delai}</p>
+              </Link>
+            ))}
           </div>
-        </section>
-      </div>
-    </>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 bg-gradient-to-b from-black via-red-950/10 to-black">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-6">Vous ne trouvez pas votre zone?</h2>
+          <p className="text-lg text-slate-300 mb-8">Contactez-nous, nous couvrons toute la région Hauts-de-France!</p>
+          <a
+            href="tel:07 67 87 80 34"
+            className="inline-block px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-red-600/50 transition-all"
+          >
+            📞 Appeler maintenant
+          </a>
+        </div>
+      </section>
+    </main>
   );
 }

@@ -1,188 +1,234 @@
-// lib/villes.ts — Données des villes d'intervention (59 Nord + 62 Pas-de-Calais)
-
 export interface Ville {
-  slug: string;       // URL kebab-case
-  nom: string;        // Nom affiché
-  cp: string;         // Code postal principal
-  dept: string;       // Numéro de département
-  region: string;     // Nom de la région
-  axes: string;       // Axes routiers principaux
-  delai: string;      // Délai d'intervention estimé
-  description: string; // Phrase unique pour le SEO
+  slug: string;
+  nom: string;
+  cp: string;
+  dept: string;
+  axes: string;
+  delai: string;
+  lat: number;
+  lng: number;
+  description: string;
 }
 
 export const villes: Ville[] = [
-  // ─── Département 59 – Nord ──────────────────────────────────────────────────
   {
-    slug: "lille",
-    nom: "Lille",
-    cp: "59000",
-    dept: "59",
-    region: "Nord",
-    axes: "A1, A22, A25, boulevard périphérique",
-    delai: "20 à 30 min",
-    description:
-      "Capitale des Flandres, Lille est desservie par un réseau dense d'autoroutes. Notre équipe intervient sur tout le territoire lillois, de Vieux-Lille au Faubourg-de-Béthune.",
+    slug: 'lille',
+    nom: 'Lille',
+    cp: '59000',
+    dept: '59',
+    axes: 'A1, A22, A25, périphérique lillois',
+    delai: '20-30 min',
+    lat: 50.6292,
+    lng: 3.0573,
+    description: 'Dépannage automobile à Lille en moins de 30 minutes. Zones : Vieux-Lille, Centre, Wazemmes, Fives, Moulins. Intervention 24/7.',
   },
   {
-    slug: "roubaix",
-    nom: "Roubaix",
-    cp: "59100",
-    dept: "59",
-    region: "Nord",
-    axes: "A22, A25, RN17, voie rapide urbaine",
-    delai: "25 à 35 min",
-    description:
-      "Roubaix, ville frontalière de la métropole lilloise, est couverte en priorité sur les axes A22 et la RN17 en direction de la Belgique.",
+    slug: 'roubaix',
+    nom: 'Roubaix',
+    cp: '59100',
+    dept: '59',
+    axes: 'A22, A412, RN17',
+    delai: '20-25 min',
+    lat: 50.6863,
+    lng: 3.1762,
+    description: 'Dépannage automobile à Roubaix. Intervention rapide en 20-25 min sur tout Roubaix et environs.',
   },
   {
-    slug: "tourcoing",
-    nom: "Tourcoing",
-    cp: "59200",
-    dept: "59",
-    region: "Nord",
-    axes: "A22, A27, RN17",
-    delai: "25 à 35 min",
-    description:
-      "Tourcoing et ses alentours sont accessibles en moins de 35 minutes, avec une présence renforcée sur l'axe autoroutier A22 reliant Lille à Gand.",
+    slug: 'tourcoing',
+    nom: 'Tourcoing',
+    cp: '59200',
+    dept: '59',
+    axes: 'A412, frontière Belgique',
+    delai: '20-25 min',
+    lat: 50.7284,
+    lng: 3.1581,
+    description: 'Dépannage auto à Tourcoing et environs. Assistance 24h/24, 7j/7. Zone nord métropole lilloise.',
   },
   {
-    slug: "villeneuve-d-ascq",
-    nom: "Villeneuve-d'Ascq",
-    cp: "59650",
-    dept: "59",
-    region: "Nord",
-    axes: "A27, A22, boulevard de la Paix, voie rapide",
-    delai: "20 à 30 min",
-    description:
-      "Ville universitaire et technopolitaine, Villeneuve-d'Ascq est accessible rapidement grâce à la proximité du périphérique Est et de l'A27.",
+    slug: 'villeneuve-d-ascq',
+    nom: 'Villeneuve-d\'Ascq',
+    cp: '59650',
+    dept: '59',
+    axes: 'A1, A22, RN17',
+    delai: '25-30 min',
+    lat: 50.6184,
+    lng: 3.1447,
+    description: 'Dépannage automobile à Villeneuve-d\'Ascq. Service 24h/24 pour toute la zone EST de la métropole.',
   },
   {
-    slug: "wattrelos",
-    nom: "Wattrelos",
-    cp: "59150",
-    dept: "59",
-    region: "Nord",
-    axes: "A22, RN17, voie rapide urbaine",
-    delai: "30 à 40 min",
-    description:
-      "Commune limitrophe de Roubaix, Wattrelos est desservie par la RN17 et l'A22. Intervention rapide sur les zones industrielles et résidentielles.",
+    slug: 'wattrelos',
+    nom: 'Wattrelos',
+    cp: '59150',
+    dept: '59',
+    axes: 'A22, RN17, route de Gand',
+    delai: '20-25 min',
+    lat: 50.7086,
+    lng: 3.2205,
+    description: 'Dépannage auto à Wattrelos. Intervention rapide garantie. Accès facile par A22.',
   },
   {
-    slug: "marcq-en-baroeul",
-    nom: "Marcq-en-Barœul",
-    cp: "59700",
-    dept: "59",
-    region: "Nord",
-    axes: "A22, boulevard de Tournai, périphérique Nord",
-    delai: "25 à 35 min",
-    description:
-      "Marcq-en-Barœul, commune résidentielle aisée du Nord, est couverte via la sortie périphérique et le boulevard de Tournai.",
+    slug: 'marcq-en-baroeul',
+    nom: 'Marcq-en-Barœul',
+    cp: '59700',
+    dept: '59',
+    axes: 'A25, RN17',
+    delai: '25-30 min',
+    lat: 50.6762,
+    lng: 3.0851,
+    description: 'Dépannage automobile à Marcq-en-Barœul. Services de remorquage et assistance routière 24/7.',
   },
   {
-    slug: "lambersart",
-    nom: "Lambersart",
-    cp: "59130",
-    dept: "59",
-    region: "Nord",
-    axes: "A25, périphérique Ouest, avenue de Dunkerque",
-    delai: "20 à 30 min",
-    description:
-      "Lambersart, commune résidentielle à l'Ouest de Lille, est idéalement positionnée à deux pas de l'A25 et du périphérique Ouest.",
+    slug: 'lambersart',
+    nom: 'Lambersart',
+    cp: '59130',
+    dept: '59',
+    axes: 'A1, A25, route de Tourcoing',
+    delai: '20-25 min',
+    lat: 50.6453,
+    lng: 3.0297,
+    description: 'Dépannage auto à Lambersart. Disponible 24h/24 pour intervention rapide.',
   },
   {
-    slug: "armentieres",
-    nom: "Armentières",
-    cp: "59280",
-    dept: "59",
-    region: "Nord",
-    axes: "A25, D22, D933",
-    delai: "35 à 45 min",
-    description:
-      "Armentières et la Lys frontalière sont couvertes via l'A25 et la D22. Intervention sur le centre-ville et les zones d'activités.",
-  },
-
-  // ─── Département 62 – Pas-de-Calais ─────────────────────────────────────────
-  {
-    slug: "lens",
-    nom: "Lens",
-    cp: "62300",
-    dept: "62",
-    region: "Pas-de-Calais",
-    axes: "A21, A1, RN17, RN47",
-    delai: "35 à 45 min",
-    description:
-      "Lens, capitale du bassin minier, est accessible via l'A21 et l'A1. Nous couvrons Lens et l'agglomération Lens-Liévin sans supplément.",
+    slug: 'la-madeleine',
+    nom: 'La Madeleine',
+    cp: '59110',
+    dept: '59',
+    axes: 'A1, A25, périphérique',
+    delai: '20-25 min',
+    lat: 50.6553,
+    lng: 3.0453,
+    description: 'Dépannage automobile à La Madeleine. Remorquage 24h/24 avec techniciens qualifiés.',
   },
   {
-    slug: "lievin",
-    nom: "Liévin",
-    cp: "62800",
-    dept: "62",
-    region: "Pas-de-Calais",
-    axes: "A21, RN47, D943",
-    delai: "35 à 45 min",
-    description:
-      "Liévin, commune de l'agglomération Lens-Liévin, est couverte en synergie avec Lens. Intervention rapide sur l'A21 et les voies locales.",
+    slug: 'croix',
+    nom: 'Croix',
+    cp: '59170',
+    dept: '59',
+    axes: 'A22, route de Tourcoing',
+    delai: '20-25 min',
+    lat: 50.6894,
+    lng: 3.1337,
+    description: 'Dépannage auto à Croix. Service d\'urgence disponible jour et nuit.',
   },
   {
-    slug: "bethune",
-    nom: "Béthune",
-    cp: "62400",
-    dept: "62",
-    region: "Pas-de-Calais",
-    axes: "A26, A21, RN41",
-    delai: "40 à 50 min",
-    description:
-      "Béthune et son arrondissement sont couverts via l'A26 (Calais–Reims) et l'A21. Zone d'intervention étendue à Bruay, Noeux et Laventie.",
+    slug: 'wasquehal',
+    nom: 'Wasquehal',
+    cp: '59690',
+    dept: '59',
+    axes: 'A25, RN17',
+    delai: '25-30 min',
+    lat: 50.6897,
+    lng: 3.0624,
+    description: 'Dépannage automobile à Wasquehal. Assistance routière complète 24/7.',
   },
   {
-    slug: "arras",
-    nom: "Arras",
-    cp: "62000",
-    dept: "62",
-    region: "Pas-de-Calais",
-    axes: "A1, A26, RN17, RN39",
-    delai: "45 à 60 min",
-    description:
-      "Arras, préfecture du Pas-de-Calais, se situe à l'intersection de l'A1 (Paris–Lille) et de l'A26. Délai estimé selon la circulation sur l'A1.",
+    slug: 'mons-en-baroeul',
+    nom: 'Mons-en-Barœul',
+    cp: '59370',
+    dept: '59',
+    axes: 'A25, route de Tourcoing',
+    delai: '25-30 min',
+    lat: 50.6679,
+    lng: 3.0876,
+    description: 'Dépannage auto à Mons-en-Barœul. Intervention rapide et services professionnels.',
   },
   {
-    slug: "henin-beaumont",
-    nom: "Hénin-Beaumont",
-    cp: "62110",
-    dept: "62",
-    region: "Pas-de-Calais",
-    axes: "A1, A21, échangeur Hénin-Beaumont",
-    delai: "35 à 45 min",
-    description:
-      "Hénin-Beaumont est idéalement positionnée sur l'A1 et l'A21. Nous intervenons sur l'échangeur autoroutier et les zones commerciales.",
+    slug: 'armentieres',
+    nom: 'Armentières',
+    cp: '59280',
+    dept: '59',
+    axes: 'A412, RN356',
+    delai: '30-35 min',
+    lat: 50.6940,
+    lng: 2.8779,
+    description: 'Dépannage automobile à Armentières. Remorquage et assistance 24/24, 7/7.',
   },
   {
-    slug: "carvin",
-    nom: "Carvin",
-    cp: "62220",
-    dept: "62",
-    region: "Pas-de-Calais",
-    axes: "A1, A21, D160",
-    delai: "35 à 45 min",
-    description:
-      "Carvin est situé à la jonction de l'A1 et de l'A21, à la frontière Nord/Pas-de-Calais. Intervention rapide sur ce nœud autoroutier stratégique.",
+    slug: 'halluin',
+    nom: 'Halluin',
+    cp: '59250',
+    dept: '59',
+    axes: 'A412, route de Belgique',
+    delai: '30-35 min',
+    lat: 50.7703,
+    lng: 3.1357,
+    description: 'Dépannage auto à Halluin. Service d\'urgence pour toute la zone nord.',
+  },
+  {
+    slug: 'lens',
+    nom: 'Lens',
+    cp: '62300',
+    dept: '62',
+    axes: 'A21, A1, RN17',
+    delai: '35-40 min',
+    lat: 50.4326,
+    lng: 2.8201,
+    description: 'Dépannage automobile à Lens (62). Remorquage 24/24. Zones : centre, Louvroil, Liévin.',
+  },
+  {
+    slug: 'lievin',
+    nom: 'Liévin',
+    cp: '62800',
+    dept: '62',
+    axes: 'A21, RN17',
+    delai: '35-40 min',
+    lat: 50.4254,
+    lng: 2.7867,
+    description: 'Dépannage auto à Liévin. Assistance routière 24/7 pour toute la zone bassin minier.',
+  },
+  {
+    slug: 'bethune',
+    nom: 'Béthune',
+    cp: '62400',
+    dept: '62',
+    axes: 'A26, RN39',
+    delai: '40-45 min',
+    lat: 50.5258,
+    lng: 2.6429,
+    description: 'Dépannage automobile à Béthune. Service d\'urgence et remorquage disponibles 24/7.',
+  },
+  {
+    slug: 'arras',
+    nom: 'Arras',
+    cp: '62000',
+    dept: '62',
+    axes: 'A1, A26, RN39',
+    delai: '40-45 min',
+    lat: 50.2927,
+    lng: 2.7671,
+    description: 'Dépannage auto à Arras (62). Intervention rapide avec techniciens expérimentés.',
+  },
+  {
+    slug: 'henin-beaumont',
+    nom: 'Héninbeaumont',
+    cp: '62110',
+    dept: '62',
+    axes: 'A1, RN17',
+    delai: '35-40 min',
+    lat: 50.4169,
+    lng: 2.8978,
+    description: 'Dépannage automobile à Hénin-Beaumont. Assistance routière 24h/24.',
+  },
+  {
+    slug: 'bruay-la-buissiere',
+    nom: 'Bruay-la-Buissière',
+    cp: '62160',
+    dept: '62',
+    axes: 'A26, RN41',
+    delai: '40-45 min',
+    lat: 50.4876,
+    lng: 2.5704,
+    description: 'Dépannage auto à Bruay-la-Buissière. Service d\'urgence et remorquage 24/7.',
+  },
+  {
+    slug: 'carvin',
+    nom: 'Carvin',
+    cp: '62220',
+    dept: '62',
+    axes: 'A1, RN17',
+    delai: '35-40 min',
+    lat: 50.4810,
+    lng: 2.9505,
+    description: 'Dépannage automobile à Carvin. Assistance routière complète 24/24.',
   },
 ];
-
-/**
- * Retourne une ville par son slug (pour les pages dynamiques).
- * @param slug – le slug URL de la ville
- */
-export function getVilleBySlug(slug: string): Ville | undefined {
-  return villes.find((v) => v.slug === slug);
-}
-
-/**
- * Retourne toutes les villes d'un département.
- * @param dept – "59" ou "62"
- */
-export function getVillesByDept(dept: string): Ville[] {
-  return villes.filter((v) => v.dept === dept);
-}
