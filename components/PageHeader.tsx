@@ -22,7 +22,7 @@ export default function PageHeader({ crumbs, kicker, titre, sous }: PageHeaderPr
       </div>
 
       <div className="container-x py-16">
-        <nav aria-label="Fil d'Ariane" className="mb-5 text-sm text-white/40">
+        <nav aria-label="Fil d'Ariane" className="mb-5 text-sm text-white/60">
           {crumbs.map((c, i) => (
             <span key={i}>
               {c.href ? (
@@ -36,8 +36,8 @@ export default function PageHeader({ crumbs, kicker, titre, sous }: PageHeaderPr
         </nav>
 
         {kicker && <span className="chip mb-4">{kicker}</span>}
-        <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-white text-balance max-w-3xl">{titre}</h1>
-        {sous && <p className="text-white/55 text-lg mt-5 max-w-2xl text-pretty">{sous}</p>}
+        <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-white neon-title text-balance max-w-3xl">{titre}</h1>
+        {sous && <p className="text-white/75 text-lg mt-5 max-w-2xl text-pretty">{sous}</p>}
       </div>
     </section>
   );

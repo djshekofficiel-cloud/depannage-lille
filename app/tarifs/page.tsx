@@ -61,7 +61,7 @@ export default function TarifsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-8 mb-10">
           <div className="card p-7 sm:p-8 border-gradient">
             <p className="chip mb-4">Comment nous calculons votre prix</p>
-            <h2 className="font-display font-bold text-white text-2xl sm:text-3xl text-balance">
+            <h2 className="font-display font-bold text-white neon-title text-2xl sm:text-3xl text-balance">
               Un devis détaillé avant validation
             </h2>
             <p className="text-white/65 mt-4 leading-relaxed">
@@ -85,7 +85,7 @@ export default function TarifsPage() {
 
           <div className="card p-7 sm:p-8">
             <p className="text-xs uppercase tracking-[0.2em] text-white/45">Urgence</p>
-            <h3 className="font-display text-2xl font-bold text-white mt-2">Besoin d&apos;un prix immédiat ?</h3>
+            <h3 className="font-display text-2xl font-bold text-white neon-title mt-2">Besoin d&apos;un prix immédiat ?</h3>
             <p className="text-white/65 mt-3 text-sm leading-relaxed">
               Donnez votre position et votre type de panne. Nous vous annonçons un tarif clair en direct.
             </p>
@@ -111,8 +111,8 @@ export default function TarifsPage() {
         </div>
 
         <div className="card p-7 mb-12">
-          <h2 className="font-display text-white font-bold text-lg mb-4">Comment est calculé le tarif ?</h2>
-          <ul className="space-y-2.5 text-white/70 text-sm">
+          <h2 className="font-display text-white neon-title font-bold text-lg mb-4">Comment est calculé le tarif ?</h2>
+          <ul className="space-y-2.5 text-white/85 text-sm">
             {[
               <>Le tarif de base comprend le déplacement dans la zone concernée et l&apos;intervention simple.</>,
               <>Un supplément kilométrique s&apos;applique pour les remorquages longue distance.</>,

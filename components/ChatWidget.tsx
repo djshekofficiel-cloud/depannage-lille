@@ -152,10 +152,10 @@ export default function ChatWidget() {
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
             </span>
             <div className="flex-1">
-              <div className="font-bold text-white text-sm leading-tight">
-                <span className="text-red-500">SM</span> Dépannage
+              <div className="font-bold text-white text-sm leading-tight" style={{ textShadow: '0 0 12px rgba(239,68,68,0.5)' }}>
+                <span className="text-red-500" style={{ textShadow: '0 0 14px rgba(239,68,68,0.9), 0 0 28px rgba(239,68,68,0.5)' }}>SM</span> Dépannage
               </div>
-              <div className="text-[11px] text-slate-400">En ligne · répond en quelques secondes</div>
+              <div className="text-[11px] text-slate-300">En ligne · répond en quelques secondes</div>
             </div>
             <a
               href={`tel:${PHONE.replace(/\s/g, '')}`}

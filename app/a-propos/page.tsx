@@ -30,7 +30,7 @@ export default function AProposPage() {
 
       <div className="container-x py-16 max-w-4xl space-y-12">
         <section>
-          <h2 className="font-display text-2xl font-bold text-white mb-3">Notre histoire</h2>
+          <h2 className="font-display text-2xl font-bold text-white neon-title mb-3">Notre histoire</h2>
           <p className="text-white/65 leading-relaxed">
             SM Dépannage est née d&apos;un constat simple : trop d&apos;automobilistes en panne attendent
             des heures sur le bord de la route avant d&apos;être secourus. Notre fondateur, fort de 15 ans
@@ -40,7 +40,7 @@ export default function AProposPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-2xl font-bold text-white mb-6">Nos valeurs</h2>
+          <h2 className="font-display text-2xl font-bold text-white neon-title mb-6">Nos valeurs</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {VALEURS.map((v) => (
               <div key={v.titre} className="card p-6 text-center">
@@ -50,14 +50,14 @@ export default function AProposPage() {
                   </svg>
                 </span>
                 <p className="font-display text-white font-bold mb-1">{v.titre}</p>
-                <p className="text-white/55 text-sm">{v.texte}</p>
+                <p className="text-white/75 text-sm">{v.texte}</p>
               </div>
             ))}
           </div>
         </section>
 
         <section>
-          <h2 className="font-display text-2xl font-bold text-white mb-3">Notre zone d&apos;action</h2>
+          <h2 className="font-display text-2xl font-bold text-white neon-title mb-3">Notre zone d&apos;action</h2>
           <p className="text-white/65 leading-relaxed">
             Basés à Lille, nous rayonnons sur toute la Métropole Européenne de Lille ainsi que sur le
             département du Nord (59) et le Pas-de-Calais (62). Nos équipes connaissent parfaitement les axes
@@ -67,7 +67,7 @@ export default function AProposPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-2xl font-bold text-white mb-4">Certifications & assurances</h2>
+          <h2 className="font-display text-2xl font-bold text-white neon-title mb-4">Certifications & assurances</h2>
           <ul className="space-y-2.5 text-white/65">
             {[
               "Assurance responsabilité civile professionnelle",
@@ -84,7 +84,7 @@ export default function AProposPage() {
 
         <div className="relative overflow-hidden rounded-[1.75rem] border-gradient card p-8 text-center">
           <div aria-hidden className="absolute -top-16 left-1/2 -translate-x-1/2 h-48 w-72 rounded-full bg-ember-500/20 blur-3xl" />
-          <h2 className="relative font-display text-white font-extrabold text-2xl mb-3">Vous avez besoin de nous ?</h2>
+          <h2 className="relative font-display text-white neon-title font-extrabold text-2xl mb-3">Vous avez besoin de nous ?</h2>
           <a href={`tel:${PHONE}`} className="relative btn-primary text-lg">Appeler SM Dépannage</a>
         </div>
       </div>

@@ -52,7 +52,7 @@ export default function VillePage({ params }: Props) {
             <span className="inline-block px-4 py-2 rounded-lg bg-red-950/50 border border-red-500/50 text-red-300 text-sm font-semibold mb-4">
               {v.dept === '59' ? 'Nord' : 'Pas-de-Calais'}
             </span>
-            <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
+            <h1 className="text-5xl md:text-6xl font-black text-white neon-title mb-6">
               Dépannage auto à <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">{v.nom}</span>
             </h1>
             <p className="text-xl text-slate-300 mb-8">
@@ -86,7 +86,7 @@ export default function VillePage({ params }: Props) {
             </div>
           </div>
 
-          <h2 className="text-3xl font-black text-white mb-6">Zones desservies à {v.nom}</h2>
+          <h2 className="text-3xl font-black text-white neon-title mb-6">Zones desservies à {v.nom}</h2>
           <div className="bg-slate-900/30 border border-slate-800 rounded-lg p-8 mb-8">
             <p className="text-slate-300 text-lg mb-4">
               <span className="font-bold text-white">Axes routiers : </span>
@@ -98,7 +98,7 @@ export default function VillePage({ params }: Props) {
             </p>
           </div>
 
-          <h2 className="text-3xl font-black text-white mb-6">Services disponibles à {v.nom}</h2>
+          <h2 className="text-3xl font-black text-white neon-title mb-6">Services disponibles à {v.nom}</h2>
           <div className="grid md:grid-cols-2 gap-4 mb-8">
             {[
               { icon: '🚗', title: 'Remorquage', desc: 'Transport sécurisé de votre véhicule' },
@@ -110,8 +110,8 @@ export default function VillePage({ params }: Props) {
             ].map((service, i) => (
               <div key={i} className="p-4 bg-slate-900/30 border border-slate-800 rounded-lg">
                 <div className="text-3xl mb-2">{service.icon}</div>
-                <h3 className="font-bold text-white mb-1">{service.title}</h3>
-                <p className="text-slate-400 text-sm">{service.desc}</p>
+                <h3 className="font-bold text-white neon-title mb-1">{service.title}</h3>
+                <p className="text-slate-300 text-sm">{service.desc}</p>
               </div>
             ))}
           </div>
@@ -121,7 +121,7 @@ export default function VillePage({ params }: Props) {
       {/* CTA */}
       <section className="py-16 md:py-20 border-b border-slate-800">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-6">Vous avez besoin de nous?</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-white neon-title mb-6">Vous avez besoin de nous?</h2>
           <p className="text-xl text-slate-300 mb-8">Appelez-nous maintenant, notre équipe intervient en {v.delai}</p>
           <a
             href="tel:07 67 87 80 34"
@@ -135,7 +135,7 @@ export default function VillePage({ params }: Props) {
       {/* Other cities */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-black via-slate-950 to-black">
         <div className="container mx-auto px-4 max-w-6xl">
-          <h2 className="text-3xl font-black text-white mb-12 text-center">Autres zones d&apos;intervention</h2>
+          <h2 className="text-3xl font-black text-white neon-title mb-12 text-center">Autres zones d&apos;intervention</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {otherCities.map((city) => (
               <Link
@@ -143,8 +143,8 @@ export default function VillePage({ params }: Props) {
                 href={`/zones-intervention/${city.slug}`}
                 className="p-4 rounded-lg bg-slate-900/50 border border-slate-800 hover:border-red-500/50 hover:bg-red-950/20 transition-all text-center group"
               >
-                <h3 className="font-bold text-white group-hover:text-red-400 transition-colors">{city.nom}</h3>
-                <p className="text-sm text-slate-400 mt-1">{city.cp}</p>
+                <h3 className="font-bold text-white neon-title group-hover:text-red-400 transition-colors">{city.nom}</h3>
+                <p className="text-sm text-slate-300 mt-1">{city.cp}</p>
               </Link>
             ))}
           </div>

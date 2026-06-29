@@ -78,7 +78,7 @@ export default function ContactPage() {
 
           {/* Formulaire */}
           <div className="card p-8">
-            <h2 className="font-display text-white font-bold text-xl mb-2">Envoyez votre demande</h2>
+            <h2 className="font-display text-white neon-title font-bold text-xl mb-2">Envoyez votre demande</h2>
             <p className="text-white/60 text-sm mb-6">
               Décrivez brièvement la situation. On vous rappelle pour confirmer le tarif et le délai.
             </p>

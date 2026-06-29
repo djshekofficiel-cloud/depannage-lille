@@ -18,9 +18,9 @@ export default function MentionsLegalesPage() {
         crumbs={[{ label: "Accueil", href: "/" }, { label: "Mentions légales" }]}
         titre="Mentions légales"
       />
-      <div className="mx-auto max-w-3xl px-5 sm:px-6 lg:px-8 py-16 prose prose-invert prose-headings:font-display prose-a:text-ember-400 text-white/70 space-y-8">
+      <div className="mx-auto max-w-3xl px-5 sm:px-6 lg:px-8 py-16 prose prose-invert prose-headings:font-display prose-a:text-ember-400 text-white/85 space-y-8">
         <section>
-          <h2 className="text-xl font-bold text-white">Éditeur du site</h2>
+          <h2 className="text-xl font-bold text-white neon-title">Éditeur du site</h2>
           <ul className="list-none space-y-1">
             <li><strong>Raison sociale :</strong> [À compléter]</li>
             <li><strong>Forme juridique :</strong> [SARL / SAS / Auto-entrepreneur]</li>
@@ -32,7 +32,7 @@ export default function MentionsLegalesPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-white">Hébergeur</h2>
+          <h2 className="text-xl font-bold text-white neon-title">Hébergeur</h2>
           <ul className="list-none space-y-1">
             <li><strong>Hébergeur :</strong> Vercel Inc.</li>
             <li><strong>Adresse :</strong> 340 Pine Street, Suite 701, San Francisco, CA 94104, USA</li>
@@ -41,7 +41,7 @@ export default function MentionsLegalesPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-white">Propriété intellectuelle</h2>
+          <h2 className="text-xl font-bold text-white neon-title">Propriété intellectuelle</h2>
           <p>
             Le contenu de ce site (textes, images, logos) est la propriété exclusive
             de [Raison sociale]. Toute reproduction, même partielle, est interdite
@@ -50,7 +50,7 @@ export default function MentionsLegalesPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-white">Responsabilité</h2>
+          <h2 className="text-xl font-bold text-white neon-title">Responsabilité</h2>
           <p>
             L&apos;éditeur s&apos;efforce d&apos;assurer l&apos;exactitude et la mise à jour des informations
             publiées. Il se réserve le droit de corriger le contenu à tout moment et
@@ -61,7 +61,7 @@ export default function MentionsLegalesPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-white">Contact</h2>
+          <h2 className="text-xl font-bold text-white neon-title">Contact</h2>
           <p>Pour toute question concernant ce site, contactez-nous via{" "}
             <Link href="/contact" className="text-orange-400 hover:underline">notre formulaire de contact</Link>.
           </p>

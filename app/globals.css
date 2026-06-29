@@ -70,6 +70,37 @@ body {
     background-image: linear-gradient(120deg, #ff4444, #d32f2f 60%, #b71c1c);
   }
 
+  /* ── Titres lumineux (néon) pour les rubriques importantes ── */
+  .neon-title {
+    color: #fff;
+    text-shadow: 0 0 14px rgba(239, 68, 68, 0.65), 0 0 32px rgba(239, 68, 68, 0.35);
+  }
+  .neon-title-blue {
+    color: #fff;
+    text-shadow: 0 0 14px rgba(59, 130, 246, 0.65), 0 0 32px rgba(59, 130, 246, 0.35);
+  }
+  /* Mot mis en avant : dégradé rouge + halo */
+  .neon-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(90deg, #ef4444, #dc2626);
+    filter: drop-shadow(0 0 12px rgba(220, 38, 38, 0.6));
+  }
+  /* Petit trait lumineux sous une rubrique */
+  .neon-underline {
+    position: relative;
+  }
+  .neon-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;
+    width: 3rem;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #ef4444, transparent);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.7);
+  }
+
   /* ── Boutons ──────────────────────────────────────────── */
   .btn {
     @apply inline-flex items-center justify-center gap-2 font-semibold rounded-xl
