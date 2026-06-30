@@ -92,11 +92,11 @@ function toWaNumber(raw: string): string {
 export async function sendInterventionWhatsApp(
   data: InterventionNotification,
 ): Promise<boolean> {
-  const phone = "+33767878034"; // Numéro WhatsApp du gérant SM Dépannage
-  const apikey = "6674209"; // Clé API CallMeBot (bot actif)
+  const phone = process.env.CALLMEBOT_PHONE || "+33767878034";
+  const apikey = process.env.CALLMEBOT_APIKEY || "6674209";
 
   if (!phone || !apikey) {
-    console.log("[DEV] WhatsApp non envoyé (CallMeBot non configuré):", data.ref);
+    console.error("[WhatsApp] Configuration manquante: phone=" + !!phone + " apikey=" + !!apikey);
     return false;
   }
 

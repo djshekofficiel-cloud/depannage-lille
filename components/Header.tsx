@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Logo from '@/components/Logo';
+import Image from 'next/image';
 
 const PHONE = '07 67 87 80 34';
 
@@ -24,9 +24,11 @@ export function Header() {
           <div className="flex items-center justify-between h-16">
             {/* Logo + badge vert pulsant */}
             <Link href="/" aria-label="SM Dépannage — accueil" className="relative transition-transform hover:scale-[1.03] flex items-center gap-2" onClick={() => setOpen(false)}>
-              <img
+              <Image
                 src="/logo-sm-depannage.svg"
                 alt="SM Dépannage"
+                width={40}
+                height={40}
                 className="h-10 w-auto"
               />
               {/* Point vert pulsant — statut disponible */}

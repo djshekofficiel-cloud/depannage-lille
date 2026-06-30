@@ -1,6 +1,7 @@
 // components/Hero.tsx — Section héros conversion : urgence + preuve + CTA.
 
 import Link from "next/link";
+import Image from "next/image";
 import { IMG } from "@/lib/images";
 import { Spotlight } from "@/components/ui/Spotlight";
 
@@ -34,9 +35,11 @@ export default function Hero({
           <div className="absolute inset-0 -z-10 blur-3xl bg-sm-red-500/20 rounded-full scale-125 animate-pulse" style={{ animationDelay: '0.5s' }} />
 
           {/* Logo */}
-          <img
+          <Image
             src="/brand/sm-depannage-logo.png"
             alt="SM DÉPANNAGE"
+            width={192}
+            height={192}
             className="h-32 sm:h-40 md:h-48 w-auto drop-shadow-2xl"
             style={{
               filter: 'drop-shadow(0 0 20px rgba(211, 47, 47, 0.6)) drop-shadow(0 0 40px rgba(211, 47, 47, 0.3))'

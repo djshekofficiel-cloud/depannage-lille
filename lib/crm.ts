@@ -108,8 +108,16 @@ export async function notifyContactForm(data: {
     details: data.message,
     email: data.email, // Ajout de l'email
   };
-  await sendInterventionWhatsApp(payload).catch(() => {});
-  return sendInterventionEmail(payload);
+  const wa = await sendInterventionWhatsApp(payload).catch((err) => {
+    console.error("[ContactForm WhatsApp]", err);
+    return false;
+  });
+  const email = await sendInterventionEmail(payload).catch((err) => {
+    console.error("[ContactForm Email]", err);
+    return false;
+  });
+  // Succès si AU MOINS un canal fonctionne (WhatsApp OU email)
+  return wa || email;
 }
 
 function mapTypePanne(type: string): InterventionInput["type_probleme"] {

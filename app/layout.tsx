@@ -1,6 +1,7 @@
 // app/layout.tsx — Layout global : SEO, JSON-LD, header glass, footer premium
 
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Sora, Russo_One } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
@@ -87,11 +88,16 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "AutoRepair", "EmergencyService"],
   "@id": SITE_URL,
-  name: "SM Dépannage",
+  name: "SM-Dépannage59",
   description:
     "Service de dépannage et remorquage automobile 24h/24, 7j/7 à Lille et dans toute la Métropole Européenne. Intervention rapide 20-30 minutes.",
   image: `${SITE_URL}/opengraph-image`,
-  logo: `${SITE_URL}/logo-sm-depannage-1.png`,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/logo-sm-depannage-1.png`,
+    width: 400,
+    height: 400,
+  },
   telephone: "07 67 87 80 34",
   priceRange: "€€",
   url: SITE_URL,
@@ -171,8 +177,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {/* Google Analytics 4 */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMY1DJMJ0C" />
-        <script
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-HMY1DJMJ0C" />
+        <Script
+          id="ga-init"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
