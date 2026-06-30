@@ -8,6 +8,22 @@ export interface Ville {
   lat: number;
   lng: number;
   description: string;
+
+  // ── Champs SEO local distinctifs (optionnels) ──────────────────────────────
+  // Tant qu'ils ne sont PAS renseignés avec des informations RÉELLES, les pages
+  // combinées service × ville restent en noindex et hors sitemap (anti-satellite).
+  // Voir lib/seo/quality.ts et SEO-LOCAL.md.
+
+  /** Quartiers / secteurs réellement desservis (ex. ["Vieux-Lille", "Wazemmes"]). */
+  quartiers?: string[];
+  /** Preuves / infos locales vérifiables (axes précis, contraintes d'accès, repères). */
+  preuvesLocales?: string[];
+  /** Introduction locale RÉDIGÉE spécifiquement pour cette ville (non templatée). */
+  introductionLocale?: string;
+  /** FAQ propre à la ville (questions réellement spécifiques au secteur). */
+  faqLocale?: Array<{ question: string; answer: string }>;
+  /** Passer à true UNIQUEMENT quand le contenu local distinctif ci-dessus est réel. */
+  indexable?: boolean;
 }
 
 export const villes: Ville[] = [
