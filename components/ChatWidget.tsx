@@ -218,55 +218,53 @@ export default function ChatWidget() {
 
   return (
     <>
-      {/* Bouton flottant */}
+      {/* Bouton flottant - Design ludique et responsive */}
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? 'Fermer le chat' : 'Ouvrir le chat'}
         aria-expanded={open}
-        className="fixed z-[100] bottom-6 right-6 flex items-center justify-center rounded-full text-white transition-all duration-300 ease-out"
+        className="fixed z-[100] bottom-4 right-4 sm:bottom-6 sm:right-6 flex items-center justify-center rounded-full text-white transition-all duration-300 ease-out hover:scale-110 active:scale-95 md:hover:scale-105 animate-bounce"
         style={{
-          width: 64,
-          height: 64,
-          background: 'linear-gradient(135deg,#ef4444,#dc2626)',
-          boxShadow: '0 4px 20px rgba(239,68,68,0.4), 0 8px 32px rgba(0,0,0,0.3)',
-          border: '2px solid rgba(255,255,255,0.2)',
-          minWidth: 64,
-          minHeight: 64,
+          width: 'clamp(56px, 12vw, 72px)',
+          height: 'clamp(56px, 12vw, 72px)',
+          background: 'linear-gradient(135deg, #25D366 0%, #1f9d55 100%)',
+          boxShadow: '0 4px 20px rgba(37,211,102,0.5), 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,255,255,0.2)',
+          border: '2px solid rgba(255,255,255,0.3)',
+          minWidth: 56,
+          minHeight: 56,
         }}
         onMouseEnter={(e) => {
-          if (window.innerWidth >= 640) {
-            e.currentTarget.style.transform = 'scale(1.12)';
-            e.currentTarget.style.boxShadow = '0 6px 28px rgba(239,68,68,0.5), 0 12px 40px rgba(0,0,0,0.4)';
+          if (window.innerWidth >= 768) {
+            e.currentTarget.style.boxShadow = '0 6px 28px rgba(37,211,102,0.6), 0 12px 40px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,255,255,0.3)';
           }
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'scale(1)';
-          e.currentTarget.style.boxShadow = '0 4px 20px rgba(239,68,68,0.4), 0 8px 32px rgba(0,0,0,0.3)';
+          e.currentTarget.style.boxShadow = '0 4px 20px rgba(37,211,102,0.5), 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,255,255,0.2)';
         }}
       >
         {open ? (
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+          <svg width="clamp(24px, 5vw, 32px)" height="clamp(24px, 5vw, 32px)" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
             <path d="M18 6 6 18M6 6l12 12" />
           </svg>
         ) : (
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 3C6.5 3 2 6.8 2 11.5c0 2.1.9 4 2.4 5.5L3 21l4.3-1.3c1.4.5 2.9.8 4.7.8 5.5 0 10-3.8 10-8.5S17.5 3 12 3z" />
+          <svg width="clamp(26px, 5vw, 34px)" height="clamp(26px, 5vw, 34px)" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.338c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
           </svg>
         )}
       </button>
 
-      {/* Fenêtre de chat */}
+      {/* Fenêtre de chat - Responsive et ludique */}
       {open && (
         <div
-          className="fixed z-[100] bottom-6 right-6 flex flex-col overflow-hidden transition-all duration-300 ease-out animate-slide-up"
+          className="fixed z-[100] bottom-4 right-4 sm:bottom-6 sm:right-6 flex flex-col overflow-hidden transition-all duration-300 ease-out animate-slide-up"
           style={{
-            width: 'min(480px, calc(100vw - 1.5rem))',
-            height: 'min(700px, calc(100vh - 8rem))',
-            background: 'linear-gradient(135deg,rgba(15,23,42,0.85) 0%,rgba(10,15,30,0.9) 100%)',
+            width: 'min(480px, calc(100vw - 2rem))',
+            height: 'min(700px, calc(100vh - 5.5rem))',
+            background: 'linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(10,15,30,0.98) 100%)',
             backdropFilter: 'blur(12px)',
-            borderRadius: 'clamp(12px, 3vw, 24px)',
-            border: '1.5px solid rgba(239,68,68,0.2)',
-            boxShadow: '0 8px 32px rgba(239,68,68,0.2), 0 16px 64px rgba(0,0,0,0.4)',
+            borderRadius: 'clamp(16px, 4vw, 24px)',
+            border: '1.5px solid rgba(37,211,102,0.3)',
+            boxShadow: '0 8px 32px rgba(37,211,102,0.15), 0 16px 64px rgba(0,0,0,0.4)',
           }}
         >
           {/* En-tête */}
