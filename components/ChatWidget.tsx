@@ -9,6 +9,7 @@ interface Msg {
 }
 
 const PHONE = '07 67 87 80 34';
+const PHONE_INTL = '33767878034';
 // Numéro WhatsApp pro au format international (07 67 87 80 34 → 33767878034).
 const WHATSAPP_LINK =
   'https://wa.me/33767878034?text=' +
@@ -29,6 +30,7 @@ export default function ChatWidget() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([{ role: 'assistant', content: WELCOME }]);
+  const [questionnaireSent, setQuestionnaireSent] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -107,6 +109,43 @@ export default function ChatWidget() {
   // Ajoute un message de l'assistant côté client (info locale, sans appel au modèle).
   function pushAssistant(content: string) {
     setMessages((prev) => [...prev, { role: 'assistant', content }]);
+  }
+
+  // Envoie toutes les infos collectées du chat via WhatsApp CallMeBot
+  async function sendChatInfoToWhatsApp() {
+    if (questionnaireSent) return;
+
+    try {
+      // Construire le résumé du chat
+      const chatSummary = messages
+        .filter((m) => m.role === 'user')
+        .map((m) => `• ${m.content}`)
+        .join('\n');
+
+      const fullMessage = `📋 *Nouvelle demande du chatbot SM Dépannage*\n\n${chatSummary}\n\n---\nDate: ${new Date().toLocaleString('fr-FR')}`;
+
+      // Envoyer via CallMeBot API
+      const response = await fetch(
+        `https://api.callmebot.com/whatsapp.php?phone=${PHONE_INTL}&text=${encodeURIComponent(fullMessage)}&apikey=${process.env.NEXT_PUBLIC_CALLMEBOT_APIKEY || process.env.CALLMEBOT_APIKEY}`,
+        { method: 'GET' }
+      );
+
+      if (response.ok) {
+        setQuestionnaireSent(true);
+        pushAssistant(
+          `✅ Vos infos ont été envoyées par WhatsApp à ${PHONE}. Nous vous répondrons rapidement!`
+        );
+      } else {
+        pushAssistant(
+          `Erreur d'envoi. Appelez-nous directement au ${PHONE}.`
+        );
+      }
+    } catch (error) {
+      pushAssistant(
+        `Erreur d'envoi. Appelez-nous directement au ${PHONE}.`
+      );
+      console.error('WhatsApp send error:', error);
+    }
   }
 
   // Demande la position du visiteur → déduit la ville couverte la plus proche (/api/position),
@@ -293,6 +332,21 @@ export default function ChatWidget() {
 
           {/* Saisie */}
           <div className="px-3 py-3" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+            {/* Bouton envoyer par WhatsApp si questionnaire commencé */}
+            {messages.length > 1 && !questionnaireSent && (
+              <button
+                onClick={sendChatInfoToWhatsApp}
+                disabled={loading}
+                className="w-full mb-2 text-xs px-3 py-2 rounded-lg font-semibold text-white transition-all disabled:opacity-50"
+                style={{
+                  background: 'linear-gradient(135deg,#25D366,#128C7E)',
+                  border: '1px solid rgba(37,211,102,0.4)',
+                }}
+              >
+                📲 Envoyer par WhatsApp
+              </button>
+            )}
+
             <div className="flex items-center gap-2">
               <button
                 onClick={demanderPosition}
