@@ -40,16 +40,20 @@ export default function Image() {
           DISPONIBLE 24H/24 · 7J/7
         </div>
 
-        {/* Titre */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 84, fontWeight: 800, lineHeight: 1.05 }}>
+        {/* Titre principal : SM Dépannage */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center", textAlign: "center" }}>
+          <div style={{ display: "flex", fontSize: 80, fontWeight: 800, alignItems: "center", justifyContent: "center" }}>
+            <span style={{ color: "#ef4444" }}>SM</span>
+            <span style={{ marginLeft: 12 }}>Dépannage</span>
+          </div>
+          <div style={{ fontSize: 52, fontWeight: 700, lineHeight: 1.1, color: "#f5f5f5" }}>
             Dépannage auto &amp; moto
           </div>
-          <div style={{ fontSize: 84, fontWeight: 800, lineHeight: 1.05, color: "#ef4444" }}>
+          <div style={{ fontSize: 48, fontWeight: 700, color: "#ef4444" }}>
             Lille &amp; Métropole
           </div>
-          <div style={{ fontSize: 33, color: "#cbd5e1", marginTop: 26 }}>
-            Remorquage · Batterie · Pneu · Panne — intervention 20 à 30 min
+          <div style={{ fontSize: 32, color: "#cbd5e1", marginTop: 6 }}>
+            Intervention 20–30 min
           </div>
         </div>
 
