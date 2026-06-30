@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "seo:check": "node scripts/check-seo.mjs",
+    "seo:gsc": "node scripts/search-console-report.mjs",
+    "seo:audit": "node scripts/unlighthouse.mjs",
+    "lhci": "lhci autorun",
+    "seo:test": "npm run seo:check && npm run build && npm run lhci"
   },
   "dependencies": {
     "framer-motion": "^12.42.0",

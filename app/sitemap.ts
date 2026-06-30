@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { services } from '@/lib/services';
 import { villes } from '@/lib/villes';
 import { SITE_URL } from '@/lib/site';
+import { indexableCombos } from '@/lib/seo/quality';
 
 const CITY_PRIORITY: Record<string, number> = {
   lille: 0.9,
@@ -37,7 +38,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: CITY_PRIORITY[ville.slug] ?? 0.8,
   }));
 
-  return [...mainPages, ...servicePages, ...cityPages].map((page) => ({
+  // Pages combinées service × ville : UNIQUEMENT les combinaisons validées par le
+  // garde anti-pages-satellites (aucune tant qu'aucune ville n'a de contenu local réel).
+  const comboPages = indexableCombos(services, villes).map(({ service, city }) => ({
+    url: `${SITE_URL}/depannage/${service.slug}/${city.slug}`,
+    priority: 0.6,
+  }));
+
+  return [...mainPages, ...servicePages, ...cityPages, ...comboPages].map((page) => ({
     ...page,
     lastModified: now,
     changeFrequency: 'weekly' as const,
