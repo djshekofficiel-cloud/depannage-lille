@@ -1,6 +1,8 @@
 
 
+import type { Metadata } from 'next';
 import { villes } from '@/lib/villes';
+import { SITE_URL, canonical } from '@/lib/site';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
@@ -10,6 +12,20 @@ interface Props {
 
 export function generateStaticParams() {
   return villes.map((v) => ({ ville: v.slug }));
+}
+
+export function generateMetadata({ params }: Props): Metadata {
+  const v = villes.find((x) => x.slug === params.ville);
+  if (!v) return {};
+  const path = `/zones-intervention/${v.slug}`;
+  const title = `Dépannage auto ${v.nom} (${v.cp}) — 24h/24, intervention ${v.delai}`;
+  const description = `Dépannage et remorquage auto à ${v.nom} (${v.dept}) : intervention en ${v.delai}, 24h/24 et 7j/7. Batterie, crevaison, panne, remorquage. Devis gratuit au 07 67 87 80 34.`;
+  return {
+    title,
+    description,
+    alternates: { canonical: canonical(path) },
+    openGraph: { title: `${title} — SM Dépannage`, description, url: canonical(path) },
+  };
 }
 
 export default function VillePage({ params }: Props) {
@@ -38,11 +54,21 @@ export default function VillePage({ params }: Props) {
     },
   };
 
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: "Zones d'intervention", item: `${SITE_URL}/zones-intervention` },
+      { '@type': 'ListItem', position: 3, name: v.nom, item: canonical(`/zones-intervention/${v.slug}`) },
+    ],
+  };
+
   return (
     <main className="bg-black text-white">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([jsonLd, breadcrumbLd]) }}
       />
 
       {/* Hero zone */}

@@ -4,6 +4,7 @@ import { HeroGeometric } from "@/components/HeroGeometric";
 import InterventionGallery from "@/components/InterventionGallery";
 import VehiculesSection from "@/components/VehiculesSection";
 import ContactForm from "@/components/ContactForm";
+import Faq from "@/components/Faq";
 import { villes } from "@/lib/villes";
 
 const PHONE = '07 67 87 80 34';
@@ -208,6 +209,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── FAQ (SEO : FAQPage) ── */}
+      <Faq />
 
       {/* ── FORMULAIRE CONTACT ── */}
       <section className="py-16 sm:py-24 bg-black border-t border-white/5">
