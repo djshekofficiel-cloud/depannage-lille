@@ -91,6 +91,7 @@ const jsonLd = {
   description:
     "Service de dépannage et remorquage automobile 24h/24, 7j/7 à Lille et dans toute la Métropole Européenne. Intervention rapide 20-30 minutes.",
   image: `${SITE_URL}/opengraph-image`,
+  logo: `${SITE_URL}/logo-sm-depannage-1.png`,
   telephone: "07 67 87 80 34",
   priceRange: "€€",
   url: SITE_URL,
