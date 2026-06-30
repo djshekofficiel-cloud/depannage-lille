@@ -8,6 +8,7 @@ export interface InterventionInput {
   localisation: string;
   type_probleme: "panne" | "accident" | "crevaison" | "batterie" | "carburant" | "remorquage" | "autre";
   vehicule?: string;
+  plaque?: string;
   urgence?: boolean;
   date_souhaitee?: string;
   details?: string;

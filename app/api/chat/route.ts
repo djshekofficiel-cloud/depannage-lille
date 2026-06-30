@@ -31,6 +31,7 @@ const TOOL = {
           enum: ['panne', 'accident', 'crevaison', 'batterie', 'carburant', 'remorquage', 'autre'],
         },
         vehicule: { type: 'string' },
+        plaque: { type: 'string', description: "Plaque d'immatriculation du véhicule (ex: AB-123-CD)" },
         urgence: { type: 'boolean' },
         date_souhaitee: {
           type: 'string',
