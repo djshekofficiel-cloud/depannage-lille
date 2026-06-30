@@ -193,9 +193,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* ── BANDEAU URGENCE (vert pulsant — statut actif) ────────────── */}
         <div className="border-b border-white/10 bg-ink-900/85">
           <div className="container-x py-2.5 text-xs sm:text-sm text-white/75 flex flex-wrap items-center gap-x-3 gap-y-1">
-            <a href={`tel:${PHONE}`} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold transition-all shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50">
+            <a href={`tel:${PHONE}`} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-emerald-400 to-emerald-500 hover:from-emerald-500 hover:to-emerald-600 text-white font-bold transition-all shadow-lg shadow-emerald-400/50 hover:shadow-emerald-400/70">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-white/80 animate-pulse" />
+                <span className="absolute inline-flex h-full w-full rounded-full bg-white animate-pulse" />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-white" />
               </span>
               Disponible 24h/24 · 7j/7
