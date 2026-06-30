@@ -8,6 +8,8 @@ export interface Service {
   description: string; // meta description
   resume: string;     // résumé court (card)
   contenu: string;    // texte long unique
+  /** false = prestation non confirmée : la page reste accessible mais en noindex. */
+  indexable?: boolean;
 }
 
 export const services: Service[] = [
