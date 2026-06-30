@@ -69,7 +69,7 @@ export function HeroPremium() {
 
             {/* Sous-titre */}
             <p className="text-lg sm:text-xl text-slate-300 max-w-xl">
-              Une intervention professionnelle pour votre véhicule, où que vous soyez. Disponible 24h/24, 7j/7.
+              Une intervention professionnelle pour votre véhicule, où que vous soyez. <span className="available-green font-semibold">Disponible 24h/24, 7j/7.</span>
             </p>
 
             {/* Disponibilité 24/7 */}

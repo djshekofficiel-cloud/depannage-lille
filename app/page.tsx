@@ -234,10 +234,10 @@ export default function HomePage() {
             <p className="text-slate-300 mt-3 mx-auto" style={{ fontSize: 'clamp(0.9rem,2.2vw,1rem)', maxWidth: 560 }}>
               Pour une demande <strong className="text-blue-300">non urgente</strong> : par exemple faire remorquer un véhicule à une <strong className="text-white">date et une heure précises</strong>. Nous vous répondons sous 2 heures.
             </p>
-            <p className="mt-5 inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold"
-              style={{ border: '1px solid rgba(239,68,68,0.4)', background: 'rgba(220,38,38,0.08)', color: '#fca5a5' }}>
-              ⚠️ Urgence ou panne en cours ? Appelez le&nbsp;
-              <a href={`tel:${PHONE}`} className="text-red-300 underline font-bold whitespace-nowrap">{PHONE}</a>
+            <p className="siren-badge mt-5 inline-flex items-center gap-3 px-5 py-3 rounded-xl border-2 font-bold text-base sm:text-lg cursor-pointer select-none">
+              <span className="text-2xl animate-bounce">🚨</span>
+              <span className="siren-text font-black tracking-wide uppercase">Urgence ou panne en cours ?</span>
+              <a href={`tel:${PHONE}`} className="ml-1 px-3 py-1 rounded-lg bg-white/10 text-white font-black whitespace-nowrap underline-offset-2 hover:bg-white/20 transition-all">{PHONE}</a>
             </p>
           </div>
 

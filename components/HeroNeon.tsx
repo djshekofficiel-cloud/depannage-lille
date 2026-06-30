@@ -36,7 +36,7 @@ export function HeroNeon() {
         {/* Badge disponibilité */}
         <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-500/50 bg-red-950/30 backdrop-blur-sm">
           <span className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0" style={{ animation: 'ping 1.5s infinite' }} />
-          <span className="text-[11px] sm:text-xs font-bold tracking-widest text-red-300 uppercase whitespace-nowrap">
+          <span className="text-[11px] sm:text-xs font-bold tracking-widest available-green uppercase whitespace-nowrap">
             Disponible 24h/24 · 7j/7
           </span>
         </div>

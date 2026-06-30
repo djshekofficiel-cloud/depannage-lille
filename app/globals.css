@@ -377,6 +377,36 @@ body {
   50%, 100%    { opacity: 1; }
 }
 
+/* Gyrophare urgence : neon rouge-bleu rotatif */
+@keyframes siren-glow {
+  0%   { box-shadow: 0 0 12px 4px #ff2222, 0 0 32px 8px #ff000088, 0 0 0px 0px #0055ff00; text-shadow: 0 0 10px #ff2222, 0 0 24px #ff0000; }
+  25%  { box-shadow: 0 0 16px 6px #ff4444, 0 0 48px 16px #ff0000bb, 0 0 0px 0px #0055ff00; text-shadow: 0 0 18px #ff4444, 0 0 40px #ff2222; }
+  50%  { box-shadow: 0 0 12px 4px #0044ff, 0 0 32px 8px #0033ff88, 0 0 0px 0px #ff000000; text-shadow: 0 0 10px #3399ff, 0 0 24px #0066ff; }
+  75%  { box-shadow: 0 0 16px 6px #1166ff, 0 0 48px 16px #0044ffbb, 0 0 0px 0px #ff000000; text-shadow: 0 0 18px #55aaff, 0 0 40px #0077ff; }
+  100% { box-shadow: 0 0 12px 4px #ff2222, 0 0 32px 8px #ff000088, 0 0 0px 0px #0055ff00; text-shadow: 0 0 10px #ff2222, 0 0 24px #ff0000; }
+}
+@keyframes siren-bg {
+  0%, 100% { background: linear-gradient(135deg, rgba(220,38,38,0.18) 0%, rgba(10,10,30,0.92) 100%); border-color: rgba(255,34,34,0.7); }
+  50%      { background: linear-gradient(135deg, rgba(0,68,255,0.18) 0%, rgba(10,10,30,0.92) 100%); border-color: rgba(0,102,255,0.7); }
+}
+@keyframes siren-text {
+  0%, 100% { color: #ff4444; }
+  50%      { color: #66aaff; }
+}
+
+.siren-badge {
+  animation: siren-glow 0.9s ease-in-out infinite, siren-bg 0.9s ease-in-out infinite;
+}
+.siren-text {
+  animation: siren-text 0.9s ease-in-out infinite;
+}
+
+/* Disponible 24h vert */
+.available-green {
+  color: #4ade80;
+  text-shadow: 0 0 8px rgba(74,222,128,0.5);
+}
+
 /* Respect des préférences de mouvement réduit */
 @media (prefers-reduced-motion: reduce) {
   *,

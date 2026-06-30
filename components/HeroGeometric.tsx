@@ -132,7 +132,7 @@ export function HeroGeometric() {
               <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
             </span>
-            <span className="text-[11px] sm:text-xs font-bold tracking-widest uppercase text-red-300">
+            <span className="text-[11px] sm:text-xs font-bold tracking-widest uppercase available-green">
               Disponible 24h/24 · 7j/7
             </span>
           </motion.div>

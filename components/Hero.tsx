@@ -78,7 +78,9 @@ export default function Hero({
             {points.map((p) => (
               <li key={p} className="glass rounded-xl px-3.5 py-2.5 text-sm text-white/80">
                 <span className="text-sm-red-500 mr-2">●</span>
-                {p}
+                {p === "Disponible 24h/24 · 7j/7"
+                  ? <span className="available-green font-semibold">{p}</span>
+                  : p}
               </li>
             ))}
           </ul>

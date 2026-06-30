@@ -98,7 +98,7 @@ export default function ServicePage({ params }: PageProps) {
         <div className="relative card border-gradient p-8 overflow-hidden">
           <div aria-hidden className="absolute -top-16 right-0 h-48 w-48 rounded-full bg-ember-500/20 blur-3xl" />
           <h2 className="relative font-display text-white neon-title font-bold text-2xl mb-3">Besoin de ce service maintenant ?</h2>
-          <p className="relative text-white/75 mb-6">Disponible 24h/24, 7j/7. Intervention en 20 à 30 min sur Lille et la MEL.</p>
+          <p className="relative text-white/75 mb-6"><span className="available-green font-semibold">Disponible 24h/24, 7j/7.</span> Intervention en 20 à 30 min sur Lille et la MEL.</p>
           <div className="relative flex flex-col sm:flex-row gap-4">
             <a href={`tel:${PHONE}`} className="btn-primary text-lg">Appeler maintenant</a>
             <Link href="/contact" className="btn-ghost text-lg">Envoyer une demande</Link>
