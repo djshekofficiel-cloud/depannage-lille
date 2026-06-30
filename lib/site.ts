@@ -1,6 +1,6 @@
 // lib/site.ts — URL, téléphone et métadonnées site (source unique)
 
-const DEFAULT_SITE_URL = "https://depannage-lille.vercel.app";
+const DEFAULT_SITE_URL = "https://www.sm-depannage59.fr";
 const DEFAULT_PHONE_E164 = "+33767878034";
 const DEFAULT_PHONE_DISPLAY = "07 67 87 80 34";
 

@@ -26,6 +26,7 @@ const sora = Sora({
 const russo = Russo_One({ subsets: ["latin"], weight: "400", variable: "--font-russo" });
 
 import { SITE_URL } from "@/lib/site";
+import { villes } from "@/lib/villes";
 
 // ─── Métadonnées globales ────────────────────────────────────────────────────
 export const metadata: Metadata = {
@@ -87,10 +88,6 @@ const jsonLd = {
   telephone: "07 67 87 80 34",
   priceRange: "€€",
   url: SITE_URL,
-  sameAs: [
-    "https://www.facebook.com/smdepannage",
-    "https://www.instagram.com/smdepannage",
-  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: "Lille",
@@ -160,7 +157,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="relative mt-24 border-t border-white/10 bg-ink-900/60">
           <div aria-hidden className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-sm-red-500/60 to-transparent" />
           <div className="container-x py-14">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-10">
               <div>
                 <Link href="/" aria-label="SM Dépannage — accueil" className="inline-block mb-4">
                   <Logo markClassName="h-9 w-9" />
@@ -202,6 +199,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   ].map(([label, href]) => (
                     <li key={href}>
                       <Link href={href} className="hover:text-sm-red-300 transition-colors">{label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-white/90 font-semibold mb-4 text-xs uppercase tracking-[0.2em]">Zones d&apos;intervention</h4>
+                <ul className="space-y-2.5 text-sm text-white/55">
+                  {villes.slice(0, 8).map((v) => (
+                    <li key={v.slug}>
+                      <Link href={`/zones-intervention/${v.slug}`} className="hover:text-sm-red-300 transition-colors">
+                        Dépannage {v.nom}
+                      </Link>
                     </li>
                   ))}
                 </ul>
