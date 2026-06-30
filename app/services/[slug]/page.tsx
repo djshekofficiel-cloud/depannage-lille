@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { services, getServiceBySlug } from "@/lib/services";
 import { serviceImage } from "@/lib/images";
+import { canonical } from "@/lib/site";
 
 interface PageProps {
   params: { slug: string };
@@ -22,7 +23,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
   return {
     title: s.titre,
     description: s.description,
-    alternates: { canonical: `https://depannage-lille.vercel.app/services/${s.slug}` },
+    alternates: { canonical: canonical(`/services/${s.slug}`) },
   };
 }
 

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const PHONE = '07 67 87 80 34';
@@ -104,9 +105,12 @@ export function HeroNeon() {
           )}
 
           {/* Image logo */}
-          <img
-            src="/logo-sm-depannage-opt.png"
+          <Image
+            src="/logo-sm-depannage-hero.png"
             alt="SM Dépannage — Dépannage automobile rapide et fiable 24h/24"
+            width={360}
+            height={360}
+            priority
             className="relative z-10 w-full h-auto object-contain select-none"
             style={{
               filter: mounted

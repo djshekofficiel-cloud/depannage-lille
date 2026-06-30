@@ -156,21 +156,135 @@ body {
     border-color: rgba(211, 47, 47, 0.6);
   }
 
-  /* ── Carte avec relief / glow au survol ───────────────── */
+  /* ── Carte avec relief / glow orange au contour ───────── */
   .card {
-    @apply relative rounded-2xl border border-white/10 backdrop-blur-xl
-           transition-all duration-300;
+    @apply relative rounded-2xl border backdrop-blur-xl transition-all duration-300;
+    border-color: rgba(249, 115, 22, 0.18);
     background-color: rgba(15, 22, 40, 0.65);
-    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.07);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.07),
+      0 0 20px -10px rgba(249, 115, 22, 0.22);
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      140deg,
+      rgba(249, 115, 22, 0.75) 0%,
+      rgba(255, 182, 39, 0.35) 30%,
+      transparent 55%,
+      rgba(251, 146, 60, 0.4) 100%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.55;
+    transition: opacity 0.3s ease;
+  }
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow:
+      0 0 16px rgba(249, 115, 22, 0.18),
+      0 0 36px -12px rgba(255, 140, 0, 0.12);
+    opacity: 0.65;
+    transition: opacity 0.3s ease, box-shadow 0.3s ease;
+    z-index: 0;
   }
   .card:hover {
     @apply -translate-y-1.5;
-    border-color: rgba(211, 47, 47, 0.4);
-    box-shadow: 0 24px 60px -22px rgba(211, 47, 47, 0.45),
+    border-color: rgba(249, 115, 22, 0.5);
+    box-shadow:
+      0 24px 60px -22px rgba(249, 115, 22, 0.42),
+      0 0 28px -6px rgba(255, 160, 50, 0.35),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
   }
+  .card:hover::before {
+    opacity: 1;
+  }
+  .card:hover::after {
+    opacity: 1;
+    box-shadow:
+      0 0 22px rgba(249, 115, 22, 0.42),
+      0 0 50px -8px rgba(255, 160, 50, 0.3);
+  }
 
-  /* ── Bordure dégradée animée ──────────────────────────── */
+  /* Carte home — contour orange animé (services, avantages) */
+  .card-glow-orange {
+    @apply relative rounded-2xl overflow-hidden transition-all duration-300;
+    background: linear-gradient(135deg, rgba(15, 15, 25, 0.95), rgba(5, 5, 15, 0.98));
+    border: 1px solid rgba(249, 115, 22, 0.22);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 0 22px -10px rgba(249, 115, 22, 0.28);
+  }
+  .card-glow-orange::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      90deg,
+      rgba(249, 115, 22, 0.15),
+      rgba(255, 190, 70, 0.95),
+      rgba(251, 146, 60, 0.5),
+      rgba(249, 115, 22, 0.15)
+    );
+    background-size: 220% 100%;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.75;
+    animation: card-orange-sweep 3.5s ease-in-out infinite;
+  }
+  .card-glow-orange::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow:
+      0 0 20px rgba(249, 115, 22, 0.25),
+      0 0 44px -10px rgba(255, 150, 40, 0.2);
+    opacity: 0.75;
+    transition: opacity 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card-glow-orange:hover {
+    transform: translateY(-4px);
+    border-color: rgba(249, 115, 22, 0.55);
+    box-shadow:
+      0 20px 48px -18px rgba(249, 115, 22, 0.48),
+      0 0 32px -4px rgba(255, 160, 50, 0.38),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  .card-glow-orange:hover::before {
+    opacity: 1;
+  }
+  .card-glow-orange:hover::after {
+    opacity: 1;
+    box-shadow:
+      0 0 28px rgba(249, 115, 22, 0.5),
+      0 0 64px -6px rgba(255, 170, 60, 0.38);
+  }
+  .card-glow-orange .card-glow-top {
+    @apply absolute top-0 left-0 right-0 h-px pointer-events-none opacity-60;
+    background: linear-gradient(90deg, transparent, rgba(255, 180, 60, 0.9), transparent);
+    box-shadow: 0 0 12px rgba(249, 115, 22, 0.8);
+  }
+  .card-glow-orange:hover .card-glow-top {
+    @apply opacity-100;
+  }
+
+  /* ── Bordure dégradée animée (orange) ─────────────────── */
   .border-gradient {
     position: relative;
   }
@@ -180,11 +294,18 @@ body {
     inset: 0;
     padding: 1px;
     border-radius: inherit;
-    background: linear-gradient(120deg, rgba(211, 47, 47, 0.7), transparent 40%, rgba(255, 68, 68, 0.6));
+    background: linear-gradient(
+      120deg,
+      rgba(249, 115, 22, 0.85),
+      rgba(255, 182, 39, 0.55) 35%,
+      transparent 55%,
+      rgba(251, 146, 60, 0.65)
+    );
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+    box-shadow: 0 0 14px rgba(249, 115, 22, 0.35);
   }
 
   /* ── Pastille / chip ──────────────────────────────────── */
@@ -230,6 +351,11 @@ body {
 @keyframes border-beam {
   from { offset-distance: 0%; }
   to   { offset-distance: 100%; }
+}
+
+@keyframes card-orange-sweep {
+  0%, 100% { background-position: 0% 50%; opacity: 0.55; }
+  50% { background-position: 100% 50%; opacity: 1; }
 }
 
 /* Phares : appels de phares (double flash puis pause) */

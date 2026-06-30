@@ -124,6 +124,7 @@ export default function ContactForm() {
           <option value="batterie">Batterie à plat</option>
           <option value="crevaison">Crevaison / Pneu</option>
           <option value="remorquage">Remorquage</option>
+          <option value="moto">Moto / scooter</option>
           <option value="panne-moteur">Panne moteur</option>
           <option value="transport">Transport de véhicule</option>
           <option value="autre">Autre</option>

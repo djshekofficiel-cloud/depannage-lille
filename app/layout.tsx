@@ -25,19 +25,21 @@ const sora = Sora({
 });
 const russo = Russo_One({ subsets: ["latin"], weight: "400", variable: "--font-russo" });
 
-const SITE_URL = "https://depannage-lille.vercel.app";
+import { SITE_URL } from "@/lib/site";
 
 // ─── Métadonnées globales ────────────────────────────────────────────────────
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Dépannage auto Lille & Métropole 24h/24 — SM Dépannage",
+    default: "Dépannage auto & moto Lille 24h/24 — SM Dépannage",
     template: "%s — SM Dépannage",
   },
   description:
-    "Service de dépannage et remorquage auto à Lille, Roubaix, Tourcoing et toute la MEL. Intervention rapide en 20–30 min. Disponible 24h/24, 7j/7. Appelez maintenant !",
+    "Service de dépannage et remorquage auto & moto à Lille, Roubaix, Tourcoing et toute la MEL. Voitures, motos, scooters. Intervention 20–30 min. 24h/24, 7j/7.",
   keywords: [
     "dépannage auto Lille",
+    "dépannage moto Lille",
+    "remorquage moto Lille",
     "remorquage voiture Lille",
     "dépannage 24h Lille",
     "dépanneur Lille",

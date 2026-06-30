@@ -4,12 +4,13 @@ import type { Metadata } from "next";
 import ServiceCard from "@/components/ServiceCard";
 import PageHeader from "@/components/PageHeader";
 import { services } from "@/lib/services";
+import { canonical } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Nos services de dépannage auto — Remorquage, Batterie, Pneu...",
   description:
-    "Remorquage, dépannage sur place, batterie à plat, crevaison, transport de véhicule. SM Dépannage intervient 24h/24 à Lille et dans le 59/62.",
-  alternates: { canonical: "https://depannage-lille.vercel.app/services" },
+    "Remorquage, dépannage sur place, batterie, crevaison, transport véhicule, dépannage moto. SM Dépannage intervient 24h/24 à Lille et dans le 59/62.",
+  alternates: { canonical: canonical("/services") },
 };
 
 export default function ServicesPage() {

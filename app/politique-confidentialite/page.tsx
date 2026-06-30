@@ -2,11 +2,12 @@
 
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
+import { canonical } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité — SM Dépannage",
   description: "Politique de confidentialité et traitement des données personnelles du site SM Dépannage.",
-  alternates: { canonical: "https://depannage-lille.vercel.app/politique-confidentialite" },
+  alternates: { canonical: canonical("/politique-confidentialite") },
   robots: { index: false },
 };
 

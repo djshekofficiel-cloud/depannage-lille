@@ -3,12 +3,13 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import PageHeader from "@/components/PageHeader";
+import { canonical } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact — Demande d'intervention dépannage auto Lille",
   description:
     "Contactez SM Dépannage pour une intervention rapide à Lille et dans le Nord–Pas-de-Calais. Ou appelez directement le 07 67 87 80 34.",
-  alternates: { canonical: "https://depannage-lille.vercel.app/contact" },
+  alternates: { canonical: canonical("/contact") },
 };
 
 const PHONE = "07 67 87 80 34";

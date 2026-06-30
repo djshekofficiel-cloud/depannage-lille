@@ -15,7 +15,7 @@ interface ServiceCardProps {
 export default function ServiceCard({ slug, nom, resume }: ServiceCardProps) {
   return (
     <Link href={`/services/${slug}`} className="group card overflow-hidden flex flex-col relative">
-      <BorderBeam duration={10} lightColor="#d32f2f" lightWidth={160} />
+      <BorderBeam duration={10} lightColor="#f97316" lightWidth={160} />
       {/* Image */}
       <div className="relative h-40 overflow-hidden">
         <div
@@ -29,7 +29,7 @@ export default function ServiceCard({ slug, nom, resume }: ServiceCardProps) {
       </div>
 
       {/* Contenu */}
-      <div className="relative flex flex-col gap-2 p-6 flex-1">
+      <div className="relative z-10 flex flex-col gap-2 p-6 flex-1">
         <h3 className="font-display text-white font-bold text-xl group-hover:text-sm-red-300 transition-colors">
           {nom}
         </h3>

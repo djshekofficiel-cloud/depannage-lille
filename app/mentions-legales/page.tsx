@@ -3,11 +3,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
+import { canonical } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Mentions légales — SM Dépannage",
   description: "Mentions légales du site SM Dépannage : éditeur, hébergeur, propriété intellectuelle.",
-  alternates: { canonical: "https://depannage-lille.vercel.app/mentions-legales" },
+  alternates: { canonical: canonical("/mentions-legales") },
   robots: { index: false },
 };
 

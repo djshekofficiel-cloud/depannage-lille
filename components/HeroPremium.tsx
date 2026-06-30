@@ -43,7 +43,7 @@ export function HeroPremium() {
                 }}
               >
                 <image
-                  href="/logo-sm-depannage.svg"
+                  href="/logo-sm-depannage-hero.png"
                   width="1254"
                   height="1254"
                   preserveAspectRatio="xMidYMid meet"

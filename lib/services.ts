@@ -111,6 +111,30 @@ Nous assurons les transports sur toute la MEL, le 59, le 62, et selon devis vers
 **Tarification**
 Le tarif est calculé selon la distance et le type de véhicule. Appelez-nous pour un devis gratuit en moins de 5 minutes.`,
   },
+  {
+    slug: "depannage-moto",
+    nom: "Dépannage moto",
+    icon: "🏍️",
+    titre: "Dépannage moto & scooter Lille — Remorquage 2 roues 24h/24",
+    description:
+      "Panne moto ou scooter à Lille ? Remorquage sécurisé 2 roues, arrimage professionnel. Intervention rapide 24h/24 sur la MEL, le 59 et le 62.",
+    resume: "Remorquage et dépannage motos, scooters et maxi-scooters en toute sécurité.",
+    contenu: `Une panne sur deux roues nécessite un matériel et un savoir-faire spécifiques. SM Dépannage prend en charge :
+
+**Véhicules concernés**
+- Motos et maxi-scooters
+- Scooters 50 à 125 cm³
+- Cyclomoteurs et 3 roues motorisés légers
+
+**Nos prestations moto**
+- Remorquage sur plateau avec arrimage sangles et cales
+- Dépannage batterie (démarrage d'urgence)
+- Crevaison — gonflage d'urgence ou transport vers garage
+- Rapatriement après chute ou panne mécanique
+
+**Sécurité**
+Sur route ou autoroute, restez équipé (gilet, triangle) et appelez-nous. Nous intervenons en 20–30 min sur Lille et la MEL.`,
+  },
 ];
 
 export function getServiceBySlug(slug: string): Service | undefined {

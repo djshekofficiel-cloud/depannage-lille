@@ -1,13 +1,16 @@
 // app/a-propos/page.tsx
 
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
+import { IMG } from "@/lib/images";
+import { canonical } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "À propos — SM Dépannage, dépanneurs professionnels Lille",
   description:
-    "Qui sommes-nous ? SM Dépannage, équipe de dépanneurs professionnels basés à Lille, au service des automobilistes du 59 et du 62 depuis + de 10 ans.",
-  alternates: { canonical: "https://depannage-lille.vercel.app/a-propos" },
+    "Qui sommes-nous ? SM Dépannage, équipe de dépanneurs professionnels basés à Lille. Dépannage voitures, motos et utilitaires dans le 59 et le 62 depuis + de 10 ans.",
+  alternates: { canonical: canonical("/a-propos") },
 };
 
 const PHONE = "07 67 87 80 34";
@@ -25,16 +28,33 @@ export default function AProposPage() {
         crumbs={[{ label: "Accueil", href: "/" }, { label: "À propos" }]}
         kicker="Notre histoire"
         titre={<>Des dépanneurs locaux, <span className="text-gradient">pas un call-center.</span></>}
-        sous="Une équipe lilloise au service des automobilistes du Nord–Pas-de-Calais depuis plus de 10 ans."
+        sous="Une équipe lilloise au service des automobilistes et motards du Nord–Pas-de-Calais depuis plus de 10 ans."
       />
+
+      <div className="container-x py-10 max-w-5xl">
+        <div className="card-glow-orange overflow-hidden">
+          <div className="card-glow-top" aria-hidden />
+          <div className="relative aspect-[21/9] sm:aspect-[2.4/1]">
+            <Image
+              src={IMG.team}
+              alt="Équipe SM Dépannage et flotte de dépanneuses à Lille"
+              fill
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+          </div>
+        </div>
+      </div>
 
       <div className="container-x py-16 max-w-4xl space-y-12">
         <section>
           <h2 className="font-display text-2xl font-bold text-white neon-title mb-3">Notre histoire</h2>
           <p className="text-white/65 leading-relaxed">
-            SM Dépannage est née d&apos;un constat simple : trop d&apos;automobilistes en panne attendent
+            SM Dépannage est née d&apos;un constat simple : trop d&apos;automobilistes et de motards en panne attendent
             des heures sur le bord de la route avant d&apos;être secourus. Notre fondateur, fort de 15 ans
-            d&apos;expérience dans la mécanique automobile, a décidé de créer un service de dépannage réactif,
+            d&apos;expérience dans la mécanique automobile et deux-roues, a décidé de créer un service de dépannage réactif,
             transparent et humain, basé à Lille.
           </p>
         </section>

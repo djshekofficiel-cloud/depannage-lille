@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -66,13 +67,16 @@ export function HeroGeometric() {
 
   return (
     <div className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden bg-[#030303]">
-      {/* Image de fond : autoroute de nuit (thème route + vitesse) */}
+      {/* Image de fond : intervention dépannage (référence SM Dépannage) */}
       <div className="absolute inset-0">
-        <img
-          src="/road-night.jpg"
+        <Image
+          src="/photos/ref/intervention-moteur.jpg"
           alt=""
-          aria-hidden="true"
-          className="w-full h-full object-cover"
+          aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
         {/* Voile sombre dégradé — garde le logo et le texte parfaitement lisibles */}
         <div
@@ -142,9 +146,12 @@ export function HeroGeometric() {
             className="relative mb-8"
             style={{ width: "min(360px, 70vw)" }}
           >
-            <img
-              src="/logo-sm-depannage-opt.png"
+            <Image
+              src="/logo-sm-depannage-hero.png"
               alt="SM Dépannage — dépannage automobile rapide et fiable"
+              width={360}
+              height={360}
+              priority
               className="w-full h-auto object-contain select-none"
               style={{
                 filter:

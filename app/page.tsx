@@ -1,6 +1,9 @@
 'use client';
 
 import { HeroGeometric } from "@/components/HeroGeometric";
+import InterventionGallery from "@/components/InterventionGallery";
+import VehiculesSection from "@/components/VehiculesSection";
+import ContactForm from "@/components/ContactForm";
 import { villes } from "@/lib/villes";
 
 const PHONE = '07 67 87 80 34';
@@ -9,19 +12,20 @@ const PHONE = '07 67 87 80 34';
 const ZONES = villes.slice(0, 12);
 
 const SERVICES = [
-  { icon: '🔧', title: 'Dépannage', desc: 'Réparation sur place pour les petites pannes mécaniques', color: 'red' },
-  { icon: '🚗', title: 'Remorquage', desc: 'Transport sécurisé de votre véhicule partout dans le Nord', color: 'red' },
-  { icon: '🔋', title: 'Batterie', desc: 'Changement et recharge batterie disponible 24h/24', color: 'blue' },
-  { icon: '⚙️', title: 'Crevaison', desc: 'Réparation rapide de pneu sur place ou en atelier', color: 'blue' },
-  { icon: '📍', title: 'Rapatriement', desc: 'Assistance routière complète vers votre domicile', color: 'red' },
-  { icon: '🚨', title: 'Urgence', desc: 'Intervention immédiate garantie 20–30 min max', color: 'red' },
+  { icon: '🔧', title: 'Dépannage', desc: 'Réparation sur place pour les petites pannes mécaniques' },
+  { icon: '🚗', title: 'Remorquage', desc: 'Transport sécurisé de votre véhicule partout dans le Nord' },
+  { icon: '🔋', title: 'Batterie', desc: 'Changement et recharge batterie disponible 24h/24' },
+  { icon: '⚙️', title: 'Crevaison', desc: 'Réparation rapide de pneu sur place ou en atelier' },
+  { icon: '📍', title: 'Rapatriement', desc: 'Assistance routière complète vers votre domicile' },
+  { icon: '🚨', title: 'Urgence', desc: 'Intervention immédiate garantie 20–30 min max' },
+  { icon: '🏍️', title: 'Moto & scooter', desc: 'Remorquage 2 roues sécurisé, arrimage professionnel' },
 ];
 
 const AVANTAGES = [
-  { num: '01', title: 'Rapidité', detail: '20–30 min d\'intervention sur Lille et la MEL', color: '#ef4444' },
-  { num: '02', title: 'Fiabilité', detail: 'Techniciens qualifiés et équipement professionnel', color: '#3b82f6' },
-  { num: '03', title: 'Disponibilité', detail: 'Service 24h/24, 7j/7, même jours fériés', color: '#ef4444' },
-  { num: '04', title: 'Transparence', detail: 'Prix annoncés avant intervention, sans surprise', color: '#3b82f6' },
+  { num: '01', title: 'Rapidité', detail: '20–30 min d\'intervention sur Lille et la MEL' },
+  { num: '02', title: 'Fiabilité', detail: 'Techniciens qualifiés et équipement professionnel' },
+  { num: '03', title: 'Disponibilité', detail: 'Service 24h/24, 7j/7, même jours fériés' },
+  { num: '04', title: 'Transparence', detail: 'Prix annoncés avant intervention, sans surprise' },
 ];
 
 export default function HomePage() {
@@ -54,43 +58,24 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {SERVICES.map((s, i) => (
-              <div key={i}
-                className="group relative p-6 sm:p-8 rounded-2xl overflow-hidden cursor-default"
-                style={{
-                  background: 'linear-gradient(135deg,rgba(15,15,25,0.95),rgba(5,5,15,0.98))',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  transition: 'border-color .3s,transform .3s',
-                  animation: `slide-up 0.5s ease-out ${i * 0.08}s both`,
-                }}
-                onMouseEnter={e => {
-                  const el = e.currentTarget;
-                  el.style.borderColor = s.color === 'red' ? 'rgba(239,68,68,0.55)' : 'rgba(59,130,246,0.55)';
-                  el.style.transform = 'translateY(-4px)';
-                }}
-                onMouseLeave={e => {
-                  const el = e.currentTarget;
-                  el.style.borderColor = 'rgba(255,255,255,0.08)';
-                  el.style.transform = 'translateY(0)';
-                }}
+              <div
+                key={i}
+                className="card-glow-orange group relative p-6 sm:p-8 cursor-default"
+                style={{ animation: `slide-up 0.5s ease-out ${i * 0.08}s both` }}
               >
-                {/* Glow coin */}
-                <div className="absolute top-0 left-0 w-24 h-24 rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: s.color === 'red' ? 'radial-gradient(circle,rgba(220,38,38,0.18) 0%,transparent 70%)' : 'radial-gradient(circle,rgba(59,130,246,0.18) 0%,transparent 70%)' }} />
-                {/* Ligne néon en haut */}
-                <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: s.color === 'red' ? 'linear-gradient(90deg,transparent,rgba(239,68,68,0.8),transparent)' : 'linear-gradient(90deg,transparent,rgba(59,130,246,0.8),transparent)' }} />
+                <div className="card-glow-top" aria-hidden />
+                <div className="absolute top-0 left-0 w-24 h-24 rounded-full pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: 'radial-gradient(circle,rgba(249,115,22,0.22) 0%,transparent 70%)' }} />
 
                 <div className="relative z-10">
                   <div className="text-4xl sm:text-5xl mb-3 sm:mb-4 select-none">{s.icon}</div>
-                  <h3 className="font-bold mb-2 sm:mb-3 leading-tight"
+                  <h3
+                    className="font-bold mb-2 sm:mb-3 leading-tight text-white"
                     style={{
                       fontSize: 'clamp(1.1rem,3vw,1.4rem)',
-                      color: '#fff',
-                      textShadow: s.color === 'red'
-                        ? '0 0 14px rgba(239,68,68,0.7), 0 0 30px rgba(239,68,68,0.3)'
-                        : '0 0 14px rgba(59,130,246,0.7), 0 0 30px rgba(59,130,246,0.3)',
-                      transition: 'text-shadow .3s',
-                    }}>
+                      textShadow: '0 0 14px rgba(249,115,22,0.65), 0 0 30px rgba(255,160,50,0.28)',
+                    }}
+                  >
                     {s.title}
                   </h3>
                   <p className="text-slate-400 leading-relaxed" style={{ fontSize: 'clamp(0.85rem,2vw,0.95rem)' }}>
@@ -125,34 +110,30 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
             {AVANTAGES.map((item, i) => (
-              <div key={i}
-                className="flex gap-4 sm:gap-6 items-start p-5 sm:p-7 rounded-2xl group"
-                style={{
-                  background: 'linear-gradient(135deg,rgba(10,10,20,0.9),rgba(4,4,12,0.95))',
-                  border: '1px solid rgba(255,255,255,0.07)',
-                  transition: 'border-color .3s',
-                }}
-                onMouseEnter={e => (e.currentTarget.style.borderColor = item.color === '#ef4444' ? 'rgba(239,68,68,0.4)' : 'rgba(59,130,246,0.4)')}
-                onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)')}
+              <div
+                key={i}
+                className="card-glow-orange flex gap-4 sm:gap-6 items-start p-5 sm:p-7 group"
               >
-                <div className="font-black leading-none flex-shrink-0 transition-all duration-300"
+                <div className="card-glow-top" aria-hidden />
+                <div
+                  className="relative z-10 font-black leading-none flex-shrink-0 transition-all duration-300 group-hover:opacity-60"
                   style={{
                     fontSize: 'clamp(2.5rem,8vw,4rem)',
-                    color: item.color,
-                    opacity: 0.22,
-                    textShadow: `0 0 20px ${item.color}`,
+                    color: '#f97316',
+                    opacity: 0.28,
+                    textShadow: '0 0 20px rgba(249,115,22,0.75)',
                   }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '0.55'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '0.22'; }}
                 >
                   {item.num}
                 </div>
-                <div className="pt-1">
-                  <h3 className="font-bold text-white mb-1.5"
+                <div className="relative z-10 pt-1">
+                  <h3
+                    className="font-bold text-white mb-1.5"
                     style={{
                       fontSize: 'clamp(1.1rem,3vw,1.4rem)',
-                      textShadow: `0 0 16px ${item.color}80, 0 0 32px ${item.color}40`,
-                    }}>
+                      textShadow: '0 0 16px rgba(249,115,22,0.55), 0 0 32px rgba(255,160,50,0.25)',
+                    }}
+                  >
                     {item.title}
                   </h3>
                   <p className="text-slate-400 leading-relaxed" style={{ fontSize: 'clamp(0.88rem,2vw,1rem)' }}>
@@ -164,6 +145,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <InterventionGallery />
+
+      <VehiculesSection />
 
       {/* ── SECTION ZONES ── */}
       <section className="py-16 sm:py-20 border-t border-white/5 bg-gradient-to-b from-slate-950 to-black">
@@ -252,40 +237,12 @@ export default function HomePage() {
             </p>
           </div>
 
-          <form className="space-y-4 sm:space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input
-                type="text"
-                placeholder="Votre nom"
-                required
-                className="px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 transition-colors"
-              />
-              <input
-                type="tel"
-                placeholder="Votre téléphone"
-                required
-                className="px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 transition-colors"
-              />
+          <div className="card-glow-orange p-6 sm:p-8">
+            <div className="card-glow-top" aria-hidden />
+            <div className="relative z-10">
+              <ContactForm />
             </div>
-            <input
-              type="email"
-              placeholder="Votre email"
-              required
-              className="w-full px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 transition-colors"
-            />
-            <textarea
-              placeholder="Votre besoin + la date et l'heure souhaitées (ex : remorquage le 5 juillet à 9h, lieu de départ et destination)..."
-              rows={4}
-              className="w-full px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 transition-colors resize-none"
-            />
-            <button
-              type="submit"
-              className="w-full py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-lg hover:shadow-xl hover:shadow-red-600/50 transition-all duration-300 hover:-translate-y-1"
-              style={{ fontSize: 'clamp(1rem,3vw,1.1rem)' }}
-            >
-              Envoyer ma demande planifiée
-            </button>
-          </form>
+          </div>
           <p className="text-center text-slate-500 text-xs sm:text-sm mt-6">
             Ou appelez directement : <strong className="text-red-400">{PHONE}</strong>
           </p>
