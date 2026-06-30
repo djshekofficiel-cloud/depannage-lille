@@ -71,6 +71,7 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.ico" },
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "SM Dépannage" },
   formatDetection: { telephone: true },
+  verification: { google: "QAI52SSKw7QKZLRk-2w_dP8y-H8DeJok9jOuyVV3xAU" },
   viewport: {
     width: "device-width",
     initialScale: 1,
