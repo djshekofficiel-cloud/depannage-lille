@@ -100,6 +100,56 @@ export default function ChatWidget() {
     }
   }
 
+  // Ajoute un message de l'assistant côté client (info locale, sans appel au modèle).
+  function pushAssistant(content: string) {
+    setMessages((prev) => [...prev, { role: 'assistant', content }]);
+  }
+
+  // Demande la position du visiteur → déduit la ville couverte la plus proche (/api/position),
+  // puis injecte l'info dans la conversation pour que l'assistant confirme zone + délai.
+  function demanderPosition() {
+    if (loading) return;
+    if (!navigator.geolocation) {
+      pushAssistant(
+        `Votre navigateur ne permet pas la géolocalisation. Indiquez-moi simplement votre ville, ou appelez le ${PHONE}.`,
+      );
+      return;
+    }
+
+    pushAssistant('📍 Je récupère votre position…');
+
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const { latitude, longitude } = pos.coords;
+        try {
+          const res = await fetch('/api/position', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ latitude, longitude }),
+          });
+          const data = await res.json().catch(() => null);
+          if (res.ok && data?.ville) {
+            send(
+              `📍 Je suis géolocalisé près de ${data.ville} (${data.cp}). Pouvez-vous intervenir et sous quel délai ?`,
+            );
+          } else {
+            pushAssistant(
+              `Je n'ai pas réussi à situer votre position. Dites-moi votre ville, ou appelez le ${PHONE}.`,
+            );
+          }
+        } catch {
+          pushAssistant(`Erreur lors de la localisation. Appelez-nous au ${PHONE}.`);
+        }
+      },
+      (err) => {
+        pushAssistant(
+          `Position non partagée (${err.message}). Indiquez-moi votre ville, ou appelez le ${PHONE}.`,
+        );
+      },
+      { enableHighAccuracy: true, timeout: 10000 },
+    );
+  }
+
   return (
     <>
       {/* Bouton flottant */}
@@ -227,6 +277,25 @@ export default function ChatWidget() {
           {/* Saisie */}
           <div className="px-3 py-3" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
             <div className="flex items-center gap-2">
+              <button
+                onClick={demanderPosition}
+                disabled={loading}
+                aria-label="Partager ma position"
+                title="Partager ma position"
+                className="flex items-center justify-center rounded-xl text-red-400 disabled:opacity-40"
+                style={{
+                  width: 42,
+                  height: 42,
+                  flexShrink: 0,
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(239,68,68,0.3)',
+                }}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </button>
               <input
                 ref={inputRef}
                 value={input}
