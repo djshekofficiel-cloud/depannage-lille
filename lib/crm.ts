@@ -66,15 +66,20 @@ async function pushToCrm(
  */
 export async function createIntervention(input: InterventionInput): Promise<InterventionResult> {
   const ref = makeRef();
-
-  // Notification WhatsApp au gérant (best-effort, ne conditionne pas le succès).
-  await sendInterventionWhatsApp({ ref, ...input, source: "chatbot" }).catch(() => {});
+  const payload = { ref, ...input, source: "chatbot" as const };
 
   const crmResult = await pushToCrm(ref, input);
-  if (crmResult?.success) return crmResult;
+  if (crmResult?.success) {
+    await sendInterventionWhatsApp(payload).catch(() => false); // notifie quand même
+    return crmResult;
+  }
 
-  const emailed = await sendInterventionEmail({ ref, ...input, source: "chatbot" });
-  if (emailed) return { success: true, ref };
+  // Canaux de notification (WhatsApp + email). Succès si AU MOINS un canal a fonctionné.
+  const [wa, emailed] = await Promise.all([
+    sendInterventionWhatsApp(payload).catch(() => false),
+    sendInterventionEmail(payload).catch(() => false),
+  ]);
+  if (wa || emailed) return { success: true, ref };
 
   return {
     success: false,
