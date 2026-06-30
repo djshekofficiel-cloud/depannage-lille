@@ -60,13 +60,12 @@ export const metadata: Metadata = {
     description:
       "Dépannage et remorquage auto rapide à Lille et dans le Nord–Pas-de-Calais. Disponible 24h/24, 7j/7.",
     url: SITE_URL,
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "SM Dépannage — dépannage auto Lille 24h/24" }],
+    // Vignette générée par app/opengraph-image.tsx (toujours à jour).
   },
   twitter: {
     card: "summary_large_image",
     title: "Dépannage auto Lille & Métropole 24h/24 — SM Dépannage",
     description: "Remorquage, batterie, pneu, panne moteur. Intervention 20–30 min, 24h/24 sur Lille, 59 & 62.",
-    images: ["/og.png"],
   },
   icons: { icon: "/favicon.ico" },
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "SM Dépannage" },
