@@ -101,18 +101,18 @@ export async function sendInterventionWhatsApp(
 
   const wa = toWaNumber(sanitize(data.telephone));
   const lines = [
-    `🚗 Nouvelle demande ${data.ref}`,
-    `Type : ${data.type_probleme}${data.urgence ? " ⚠️ URGENT" : ""}`,
-    `Nom : ${sanitize(data.nom)}`,
-    `Tél : ${sanitize(data.telephone)}`,
-    `Lieu : ${sanitize(data.localisation)}`,
-    ...(data.vehicule ? [`Véhicule : ${sanitize(data.vehicule)}`] : []),
-    ...(data.plaque ? [`Plaque : ${sanitize(data.plaque)}`] : []),
-    ...(data.date_souhaitee ? [`Créneau : ${sanitize(data.date_souhaitee)}`] : []),
-    ...(data.details ? [`Détails : ${sanitize(data.details)}`] : []),
-    `Source : ${data.source}`,
+    `🚗 NOUVELLE DEMANDE ${data.ref}${data.urgence ? " ⚠️ URGENT" : ""}`,
     ``,
-    `➡️ Répondre au client : https://wa.me/${wa}`,
+    `👤 ${sanitize(data.nom)}`,
+    `📞 ${sanitize(data.telephone)}`,
+    `📍 ${sanitize(data.localisation)}`,
+    `🔧 Panne : ${data.type_probleme}`,
+    ...(data.vehicule ? [`🚙 Véhicule : ${sanitize(data.vehicule)}`] : []),
+    ...(data.plaque ? [`🔖 Plaque : ${sanitize(data.plaque)}`] : []),
+    ...(data.date_souhaitee ? [`🗓️ Créneau : ${sanitize(data.date_souhaitee)}`] : []),
+    ...(data.details ? [`📝 ${sanitize(data.details)}`] : []),
+    ``,
+    `➡️ Rappeler le client : https://wa.me/${wa}`,
   ];
 
   const url =
