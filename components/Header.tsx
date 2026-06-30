@@ -23,8 +23,12 @@ export function Header() {
         <div className="container-x">
           <div className="flex items-center justify-between h-16">
             {/* Logo + badge vert pulsant */}
-            <Link href="/" aria-label="SM Dépannage — accueil" className="relative transition-transform hover:scale-[1.03]" onClick={() => setOpen(false)}>
-              <Logo markClassName="h-9 w-9" />
+            <Link href="/" aria-label="SM Dépannage — accueil" className="relative transition-transform hover:scale-[1.03] flex items-center gap-2" onClick={() => setOpen(false)}>
+              <img
+                src="/logo-sm-depannage.svg"
+                alt="SM Dépannage"
+                className="h-10 w-auto"
+              />
               {/* Point vert pulsant — statut disponible */}
               <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 animate-pulse" />
