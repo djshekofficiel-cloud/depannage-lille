@@ -13,7 +13,7 @@ function isValidTel(tel: string): boolean {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { nom, tel, lieu, typePanne, message, website } = body;
+    const { nom, email, tel, lieu, typePanne, message, website } = body;
 
     if (website) {
       return NextResponse.json({ ok: true }, { status: 200 });
@@ -21,6 +21,9 @@ export async function POST(req: NextRequest) {
 
     if (!nom || typeof nom !== "string" || nom.trim().length < 2) {
       return NextResponse.json({ error: "Nom invalide." }, { status: 400 });
+    }
+    if (!email || typeof email !== "string" || !email.includes("@")) {
+      return NextResponse.json({ error: "Email invalide." }, { status: 400 });
     }
     if (!tel || !isValidTel(tel)) {
       return NextResponse.json({ error: "Numéro de téléphone invalide." }, { status: 400 });
@@ -34,6 +37,7 @@ export async function POST(req: NextRequest) {
 
     const ok = await notifyContactForm({
       nom: sanitize(nom).substring(0, 100),
+      email: sanitize(email).substring(0, 100),
       tel: sanitize(tel).substring(0, 25),
       lieu: sanitize(lieu).substring(0, 300),
       typePanne: sanitize(typePanne).substring(0, 100),

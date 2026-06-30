@@ -16,6 +16,7 @@ export default function ContactForm() {
     const form = e.currentTarget;
     const data = {
       nom: (form.elements.namedItem("nom") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
       tel: (form.elements.namedItem("tel") as HTMLInputElement).value,
       lieu: (form.elements.namedItem("lieu") as HTMLInputElement).value,
       typePanne: (form.elements.namedItem("typePanne") as HTMLSelectElement).value,
@@ -74,6 +75,22 @@ export default function ContactForm() {
           required
           autoComplete="name"
           placeholder="Jean Dupont"
+          className="bg-ink-900/80 border border-white/10 focus:border-ember-500 focus:ring-1 focus:ring-ember-500/60 rounded-xl px-4 py-3 text-white placeholder-white/30 outline-none transition"
+        />
+      </div>
+
+      {/* Email */}
+      <div className="flex flex-col gap-2">
+        <label htmlFor="email" className="text-sm font-semibold text-white/70">
+          Votre email <span className="text-ember-400">*</span>
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          placeholder="jean@example.com"
           className="bg-ink-900/80 border border-white/10 focus:border-ember-500 focus:ring-1 focus:ring-ember-500/60 rounded-xl px-4 py-3 text-white placeholder-white/30 outline-none transition"
         />
       </div>

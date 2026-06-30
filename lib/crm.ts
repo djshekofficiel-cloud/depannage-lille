@@ -7,6 +7,7 @@ export interface InterventionInput {
   telephone: string;
   localisation: string;
   type_probleme: "panne" | "accident" | "crevaison" | "batterie" | "carburant" | "remorquage" | "autre";
+  email?: string;
   vehicule?: string;
   plaque?: string;
   urgence?: boolean;
@@ -87,9 +88,10 @@ export async function createIntervention(input: InterventionInput): Promise<Inte
   };
 }
 
-/** Notification formulaire contact (même canal email). */
+/** Notification formulaire contact (WhatsApp + email). */
 export async function notifyContactForm(data: {
   nom: string;
+  email: string;
   tel: string;
   lieu: string;
   typePanne: string;
@@ -104,6 +106,7 @@ export async function notifyContactForm(data: {
     localisation: data.lieu,
     type_probleme: mapTypePanne(data.typePanne),
     details: data.message,
+    email: data.email, // Ajout de l'email
   };
   await sendInterventionWhatsApp(payload).catch(() => {});
   return sendInterventionEmail(payload);
