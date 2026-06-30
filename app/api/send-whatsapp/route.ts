@@ -3,8 +3,8 @@
 export const runtime = 'nodejs';
 export const maxDuration = 10;
 
-const PHONE = '33767878034'; // Format international sans +
-const APIKEY = process.env.CALLMEBOT_APIKEY || '';
+const PHONE = '33767878034'; // Format international sans + (07 67 87 80 34)
+const APIKEY = '6674209'; // Clé API CallMeBot activée
 
 export async function POST(req: Request) {
   try {
