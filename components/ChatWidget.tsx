@@ -9,6 +9,7 @@ interface Msg {
 }
 
 const PHONE = '07 67 87 80 34';
+const WAZE_LINK = 'https://www.waze.com/ul?address=105%20Rue%20Delannoy%2C%2059160%20Lille&navigate=yes';
 const WHATSAPP_LINK =
   'https://wa.me/33767878034?text=' +
   encodeURIComponent('Bonjour, j\'ai besoin d\'un dépannage. Voici ma situation : ');
@@ -354,21 +355,40 @@ export default function ChatWidget() {
 
           {/* Saisie */}
           <div className="px-3 py-3" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-            {/* Bouton envoyer par WhatsApp avec animation si questionnaire complet */}
+            {/* Boutons d'action si questionnaire complet */}
             {messages.length > 1 && !questionnaireSent && (
-              <button
-                onClick={sendChatInfoToWhatsApp}
-                disabled={loading}
-                className={`w-full mb-2 text-xs px-3 py-2 rounded-lg font-semibold text-white transition-all disabled:opacity-50 ${
-                  isQuestionnaireComplete ? 'whatsapp-pulse' : ''
-                }`}
-                style={{
-                  background: 'linear-gradient(135deg,#25D366,#128C7E)',
-                  border: '1px solid rgba(37,211,102,0.4)',
-                }}
-              >
-                📲 Envoyer par WhatsApp
-              </button>
+              <div className="space-y-2 mb-2">
+                {/* Bouton WhatsApp avec animation */}
+                <button
+                  onClick={sendChatInfoToWhatsApp}
+                  disabled={loading}
+                  className={`w-full text-xs px-3 py-2 rounded-lg font-semibold text-white transition-all disabled:opacity-50 ${
+                    isQuestionnaireComplete ? 'whatsapp-pulse' : ''
+                  }`}
+                  style={{
+                    background: 'linear-gradient(135deg,#25D366,#128C7E)',
+                    border: '1px solid rgba(37,211,102,0.4)',
+                  }}
+                >
+                  📲 Envoyer par WhatsApp
+                </button>
+
+                {/* Bouton Waze si complet */}
+                {isQuestionnaireComplete && (
+                  <a
+                    href={WAZE_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full block text-xs px-3 py-2 rounded-lg font-semibold text-white text-center transition-all hover:opacity-90 disabled:opacity-50"
+                    style={{
+                      background: 'linear-gradient(135deg,#4A90E2,#357ABD)',
+                      border: '1px solid rgba(74,144,226,0.4)',
+                    }}
+                  >
+                    🗺️ Ouvrir Waze (105 Rue Delannoy, Lille)
+                  </a>
+                )}
+              </div>
             )}
 
             <div className="flex items-center gap-2">
